@@ -1,0 +1,81 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E8BEA0E0-4CCC-45C9-B395-923264E4AEEF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TeklaBeans</RootNamespace>
+    <AssemblyName>TeklaBeans</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Tekla.Structures, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\TeklaStructures\13.0\nt\bin\plugins\Tekla.Structures.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.Model, Version=1.0.5.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\TeklaStructures\13.0\nt\bin\plugins\Tekla.Structures.Model.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BeamPlateInfo.cs" />
+    <Compile Include="CIPDeck.cs" />
+    <Compile Include="AnyBeam.cs" />
+    <Compile Include="CIPDeckRSlab.cs" />
+    <Compile Include="TeklaISteelPolyGirder.cs" />
+    <Compile Include="TeklaPier.cs" />
+    <Compile Include="TeklaPierColumn.cs" />
+    <Compile Include="TeklaContourPointSortByY.cs" />
+    <Compile Include="TeklaContourPointSortByX.cs" />
+    <Compile Include="PrestressedStrand.cs" />
+    <Compile Include="PrecastBeamSpan.cs" />
+    <Compile Include="PrecastBeam.cs" />
+    <Compile Include="CSection.cs" />
+    <Compile Include="IBeam.cs" />
+    <Compile Include="ISection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RSection.cs" />
+    <Compile Include="Section.cs" />
+    <Compile Include="TContourPoint.cs" />
+    <Compile Include="TeklaISteelGirder.cs" />
+    <Compile Include="TeklaPartSortByName.cs" />
+    <Compile Include="TPoint.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\QCS.Utils\QCS.Utils\QCS.Utils.csproj">
+      <Project>{38CF5240-210C-445D-9310-EB15756981B8}</Project>
+      <Name>QCS.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

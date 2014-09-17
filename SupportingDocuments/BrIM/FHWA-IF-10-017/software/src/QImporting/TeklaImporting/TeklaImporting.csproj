@@ -1,0 +1,107 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9FD0D571-E76D-4D3F-A3F4-B66022B0983A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TeklaImporting</RootNamespace>
+    <AssemblyName>TeklaImporting</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Tekla.Structures, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\TeklaStructures\13.0\nt\bin\plugins\Tekla.Structures.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.Model, Version=1.0.5.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\TeklaStructures\13.0\nt\bin\plugins\Tekla.Structures.Model.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="fmTeklaImporting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmTeklaImporting.Designer.cs">
+      <DependentUpon>fmTeklaImporting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="fmTeklaImporting.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>fmTeklaImporting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="TeklaUtil.cs" />
+    <Compile Include="TeklaConstants.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\QCS.Utils\QCS.Utils\QCS.Utils.csproj">
+      <Project>{38CF5240-210C-445D-9310-EB15756981B8}</Project>
+      <Name>QCS.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\QImporting.Beans\QImporting.Beans\QImporting.Beans.csproj">
+      <Project>{88281F1B-37E2-44B7-918D-784106B022BD}</Project>
+      <Name>QImporting.Beans</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\QImporting.Utils\QImporting.Utils\QImporting.Utils.csproj">
+      <Project>{E836A2D4-D031-44CB-AC06-DF8DE2231D61}</Project>
+      <Name>QImporting.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TeklaBeans\TeklaBeans.csproj">
+      <Project>{E8BEA0E0-4CCC-45C9-B395-923264E4AEEF}</Project>
+      <Name>TeklaBeans</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.wsdot.wa.gov/OpenBridgeML/Geometry"
+           xmlns:bxg="http://www.wsdot.wa.gov/OpenBridgeML/Geometry"
+           xmlns:bxu="http://www.wsdot.wa.gov/OpenBridgeML/Units">
+  <xs:annotation>
+    <xs:documentation>
+      This schema defines the OpenBridgeML protocol for modeling basic geometry. Basic geometry consists of points, lines, and circles.
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Units" schemaLocation="OpenBridgeML_Units.xsd" />
+
+  <xs:complexType name="Point2DType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a point in a planar space
+      </xs:documentation>
+    </xs:annotation>
+      <xs:sequence>
+        <xs:element name="X" type="bxu:LengthValueType"/>
+        <xs:element name="Y" type="bxu:LengthValueType"/>
+      </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="PointRefType">
+    <xs:annotation>
+      <xs:documentation>
+        
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="refId" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="LineType">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:sequence>
+        <xs:element name="Point" type="bxg:Point2DType"/>
+        <xs:element name="Direction" type="bxu:AngleValueType" />
+      </xs:sequence>
+      <xs:sequence>
+        <xs:element name="PointRef" type="bxg:PointRefType"/>
+        <xs:element name="Direction" type="bxu:AngleValueType" />
+      </xs:sequence>
+    </xs:choice>
+    <xs:attribute name="id" type="xs:string" />
+  </xs:complexType>
+
+  <xs:complexType name="CircleType">
+    <xs:annotation>
+      <xs:documentation>
+        
+      </xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:sequence>
+        <xs:element name="Center" type="bxg:Point2DType"/>
+        <xs:element name="Radius" type="bxu:PositiveLengthValueType" />
+      </xs:sequence>
+      <xs:sequence>
+        <xs:element name="CenterRef" type="bxg:PointRefType" />
+        <xs:choice>
+        <xs:element name="Radius" type="bxu:PositiveLengthValueType" />
+        <xs:element name="POC" type="bxg:PointRefType" /> <!-- point on circumference -->
+      </xs:choice>
+    </xs:sequence>
+    </xs:choice>
+    <xs:attribute name="id" type="xs:string" />
+  </xs:complexType>
+
+
+   <xs:simpleType name="AzimuthType">
+      <xs:restriction base="xs:double"/>
+      <!-- use reg expression to restrict the string -->
+      <!-- the valid string for Azimuth and Skew are the same, they are just measured from different datum -->
+   </xs:simpleType>
+   <xs:simpleType name="SkewType">
+      <xs:restriction base="xs:string"/>
+      <!-- use reg expression to restrict the string -->
+   </xs:simpleType>
+   <xs:simpleType name="BearingType">
+      <xs:restriction base="xs:string"/>
+      <!-- use reg expression to restrict the string -->
+   </xs:simpleType>
+
+   <!--
+   The intent of this is to ensure uniqueness in element id's of there was a <Geometry> section in the XML
+   <xs:element name="Geometry">
+    <xs:unique name="uniquePointId">
+      <xs:selector xpath="Point"/>
+      <xs:field xpath="@id" />
+    </xs:unique>
+
+    <xs:unique name="uniqueLineId">
+      <xs:selector xpath="Line"/>
+      <xs:field xpath="@id" />
+    </xs:unique>
+
+    <xs:unique name="uniqueCircleId">
+      <xs:selector xpath="Circle"/>
+      <xs:field xpath="@id" />
+    </xs:unique>
+
+    <xs:keyref name="pointRef" refer="uniquePointId">
+      <xs:selector xpath="Line/PointRef|Circle/CenterRef|Circle/POC"/>
+      <xs:field xpath="@refId" />
+    </xs:keyref>
+  </xs:element>
+  -->
+
+</xs:schema>

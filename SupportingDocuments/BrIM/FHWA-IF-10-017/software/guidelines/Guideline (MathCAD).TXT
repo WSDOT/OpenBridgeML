@@ -1,0 +1,26 @@
+=================
+	Guideline
+=================
+
+MathCAD Calculation Sheet:
+==============================================
+
+Input: txt and DTM format linkage file from InRoads
+-----------------------------------------------------------------------------
+	1. Highway Alignment Data exported from InRoads;
+	2. Bridge Project basic information: project name, bridge name...
+	3. Superstructure preliminary design: bridge width, spacing of girders, offset of centerline, girder dimensions (width and depth of flange and web), piece ends...
+	4. Skews of support line...
+	
+MathCAD Calculation sheet:
+-----------------------------------------------------------------------------
+	1. Get and analyze the highway alignment data...
+	2. Calculations and checking for preliminary design	...
+	
+Output: XML format linkage file
+-----------------------------------------------------------------------------
+	1. Deck: geometry of deck, characteristic points on deck...
+	2. Girders: girder section data (width and depth of flange and web), the x, y, z (elevation) values of characteristic points along the centerline of the top surface of each girder...
+	3. Support line data...
+	
+	

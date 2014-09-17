@@ -1,0 +1,21 @@
+==================
+	Guidelines
+==================
+
+Estimating Link:
+==============================================
+
+Input: csv format linkage file (from Tekla or Estimating Link itself)
+-----------------------------------------------------------------------------
+	1. BOM data: item No., item description, quantities, unit;
+	2. Rate tables: Labor, equipment, material, rentals...
+	
+Functionalities in Estimating Link:
+------------------------------------------------------------------------------
+	1. Cost estimation...
+	2. Bidding...
+	
+Output: csv format linkage file	which contains construction schedule data (to MS project)
+------------------------------------------------------------------------------
+	1. Item/construction schedule data: Item No., item description, duration;
+	

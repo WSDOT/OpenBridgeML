@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.wsdot.wa.gov/OpenBridgeML/Framing"
+           xmlns:bxf="http://www.wsdot.wa.gov/OpenBridgeML/Framing"
+           xmlns:bxa="http://www.wsdot.wa.gov/OpenBridgeML/Alignments"
+           xmlns:bxg="http://www.wsdot.wa.gov/OpenBridgeML/Geometry"
+           xmlns:bxu="http://www.wsdot.wa.gov/OpenBridgeML/Units">
+   <xs:annotation>
+      <xs:documentation>
+         This schema defines the OpenBridgeML protocol for modeling bridge framing.
+      </xs:documentation>
+   </xs:annotation>
+
+   <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Alignments" schemaLocation="OpenBridgeML_Alignments.xsd" />
+   <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Geometry" schemaLocation="OpenBridgeML_Geometry.xsd" />
+   <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Units" schemaLocation="OpenBridgeML_Units.xsd" />
+
+   <xs:complexType name="PierLineType">
+      <!-- later, we will define <Pier> and <Abutment> elements that describe the
+      actual bridge component. <Pier> and <Abutment> will reference a <PierLine>.
+      This is a plan view layout line for the overall bridge geometry -->
+      <xs:annotation>
+         <xs:documentation>
+            Models a pier line. A pier line locates a pier along an alignment.
+            The pier line can be any arbitrary line, however it is best to use a meaningful line such as CL Bearing or CL Pier.
+         </xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="Station" type="bxu:LengthValueType"/>
+         <xs:choice minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:documentation>
+                  Define the orientation of the pier line by its azimuth, skew angle, or bearing.
+                  Skew angles are measured clock-wise from the left-normal to the alignment.
+                  If this element is omitted the pier line is taken to be normal to the alignment
+               </xs:documentation>
+            </xs:annotation>
+            <xs:element name="Azimuth" type="bxg:AzimuthType"/>
+            <xs:element name="Skew" type="bxg:SkewType"/>
+            <xs:element name="Bearing" type="bxg:BearingType"/>
+         </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:string" use="required"/>
+      <xs:attribute name="alignmentRef" type="xs:string" use="optional">
+         <xs:annotation>
+            <xs:documentation>
+               Name of the alignment this station is measured on.
+               If omitted it the alignment referenced by the parent elemnt will be used.
+            </xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+
+   <xs:complexType name="PierLinesType">
+      <xs:sequence>
+         <xs:element name="PierLine" type="bxf:PierLineType" minOccurs="2" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="alignmentRef" type="xs:string" use="required"/>
+   </xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,14 @@
+obj\Debug\ResolveAssemblyReference.cache
+bin\Debug\QImporting.Utils.dll
+bin\Debug\QImporting.Utils.pdb
+bin\Debug\QImporting.Beans.dll
+bin\Debug\QImporting.Beans.pdb
+obj\Debug\QImporting.Utils.pdb
+bin\Debug\RevitImporting.dll
+bin\Debug\QCS.Utils.dll
+bin\Debug\QCS.Utils.pdb
+bin\Debug\RevitImporting.pdb
+bin\Debug\QImporting.Utils.exe
+bin\Debug\TeklaBeans.dll
+bin\Debug\TeklaBeans.pdb
+obj\Debug\QImporting.Utils.exe

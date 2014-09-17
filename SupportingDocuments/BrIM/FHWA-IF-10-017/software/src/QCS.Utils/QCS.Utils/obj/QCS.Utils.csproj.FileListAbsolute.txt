@@ -1,0 +1,10 @@
+D:\CSharpProjects\QCS.Utils\QCS.Utils\bin\Release\QCS.Utils.dll
+D:\CSharpProjects\QCS.Utils\QCS.Utils\bin\Release\QCS.Utils.pdb
+D:\CSharpProjects\QCS.Utils\QCS.Utils\obj\Release\ResolveAssemblyReference.cache
+D:\CSharpProjects\QCS.Utils\QCS.Utils\obj\Release\QCS.Utils.dll
+D:\CSharpProjects\QCS.Utils\QCS.Utils\obj\Release\QCS.Utils.pdb
+D:\CSharpProjects\QCS.Utils\QCS.Utils\bin\Debug\QCS.Utils.dll
+D:\CSharpProjects\QCS.Utils\QCS.Utils\bin\Debug\QCS.Utils.pdb
+D:\CSharpProjects\QCS.Utils\QCS.Utils\obj\Debug\ResolveAssemblyReference.cache
+D:\CSharpProjects\QCS.Utils\QCS.Utils\obj\Debug\QCS.Utils.dll
+D:\CSharpProjects\QCS.Utils\QCS.Utils\obj\Debug\QCS.Utils.pdb

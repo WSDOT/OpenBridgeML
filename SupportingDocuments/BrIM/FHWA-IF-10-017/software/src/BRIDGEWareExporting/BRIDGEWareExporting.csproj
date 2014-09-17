@@ -1,0 +1,115 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E98A17BA-2BEC-4B07-8E89-E0EB49F77A41}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BRIDGEWareExporting</RootNamespace>
+    <AssemblyName>BRIDGEWareExporting</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="abedata, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\abedata.dll</HintPath>
+    </Reference>
+    <Reference Include="abobmdef, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\abobmdef.dll</HintPath>
+    </Reference>
+    <Reference Include="Abobrdg, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Abobrdg.dll</HintPath>
+    </Reference>
+    <Reference Include="abocfg, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\abocfg.dll</HintPath>
+    </Reference>
+    <Reference Include="abocncb, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\abocncb.dll</HintPath>
+    </Reference>
+    <Reference Include="abofloor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\abofloor.dll</HintPath>
+    </Reference>
+    <Reference Include="abolib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\abolib.dll</HintPath>
+    </Reference>
+    <Reference Include="Abombr, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Abombr.dll</HintPath>
+    </Reference>
+    <Reference Include="aborslt, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\aborslt.dll</HintPath>
+    </Reference>
+    <Reference Include="Abostld, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Abostld.dll</HintPath>
+    </Reference>
+    <Reference Include="Abosys, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Abosys.dll</HintPath>
+    </Reference>
+    <Reference Include="abotmbr, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\abotmbr.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BRIDGEWareConverter.cs" />
+    <Compile Include="ProgramRunner.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BRIDGEWareImporting\BRIDGEWareImporting.csproj">
+      <Project>{6181028F-789E-4A0A-B6D3-F0E0A5D5911D}</Project>
+      <Name>BRIDGEWareImporting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QCS.Utils\QCS.Utils\QCS.Utils.csproj">
+      <Project>{38CF5240-210C-445D-9310-EB15756981B8}</Project>
+      <Name>QCS.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QImporting.Beans\QImporting.Beans\QImporting.Beans.csproj">
+      <Project>{88281F1B-37E2-44B7-918D-784106B022BD}</Project>
+      <Name>QImporting.Beans</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QImporting.Utils\QImporting.Utils\QImporting.Utils.csproj">
+      <Project>{E836A2D4-D031-44CB-AC06-DF8DE2231D61}</Project>
+      <Name>QImporting.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

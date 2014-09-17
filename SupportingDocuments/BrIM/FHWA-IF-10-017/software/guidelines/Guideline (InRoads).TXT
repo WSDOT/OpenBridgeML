@@ -1,0 +1,12 @@
+Guideline:
+
+Bentley InRoads
+
+Input: alg file
+	1. Highway Alignment Data in alg file: six pairs of horizontal alignments and vertical profiles 
+	
+Output: LandXML format linkage file or text file
+	1. Highway Alignment Data: six pairs of alignment data
+
+	
+	

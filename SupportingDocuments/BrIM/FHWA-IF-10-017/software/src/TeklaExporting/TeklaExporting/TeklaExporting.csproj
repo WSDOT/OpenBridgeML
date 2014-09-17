@@ -1,0 +1,76 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F9F379D4-C416-4851-8DE3-EB9E19093639}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TeklaExporting</RootNamespace>
+    <AssemblyName>TeklaExporting</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Tekla.Structures, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\TeklaStructures\13.0\nt\bin\plugins\Tekla.Structures.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.Model, Version=1.0.5.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\TeklaStructures\13.0\nt\bin\plugins\Tekla.Structures.Model.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ProgramRunner.cs" />
+    <Compile Include="ExportingConverter.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TeklaUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\QCS.Utils\QCS.Utils\QCS.Utils.csproj">
+      <Project>{38CF5240-210C-445D-9310-EB15756981B8}</Project>
+      <Name>QCS.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\QImporting.Beans\QImporting.Beans\QImporting.Beans.csproj">
+      <Project>{88281F1B-37E2-44B7-918D-784106B022BD}</Project>
+      <Name>QImporting.Beans</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\QImporting.Utils\QImporting.Utils\QImporting.Utils.csproj">
+      <Project>{E836A2D4-D031-44CB-AC06-DF8DE2231D61}</Project>
+      <Name>QImporting.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\QImporting\TeklaBeans\TeklaBeans.csproj">
+      <Project>{E8BEA0E0-4CCC-45C9-B395-923264E4AEEF}</Project>
+      <Name>TeklaBeans</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

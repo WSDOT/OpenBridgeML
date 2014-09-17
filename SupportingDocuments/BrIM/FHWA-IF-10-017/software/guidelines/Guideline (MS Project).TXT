@@ -1,0 +1,18 @@
+=================
+	Guideline
+=================
+
+MS Project:
+==============================================
+
+Input: csv format linkage file (from Tekla 4D, Estimating Link and MS Project itself)
+-----------------------------------------------------------------------------
+	1. Erection/Construction Scheduling data: item No., item description, start date, end date or duration...
+	
+Functionalities in Estimating Link:
+------------------------------------------------------------------------------
+	1. Tasks calendar or scheduling...
+	
+Output: csv format linkage file	which contains constrution schedule data (to MS project)
+------------------------------------------------------------------------------
+	1. Erection/Construction Scheduling data: item No., item description, start date, end date or duration...

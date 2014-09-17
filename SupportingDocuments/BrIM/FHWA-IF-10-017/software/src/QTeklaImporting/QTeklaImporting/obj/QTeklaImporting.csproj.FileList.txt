@@ -1,0 +1,8 @@
+bin\Debug\QTeklaImporting.dll
+bin\Debug\QTeklaImporting.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\QTeklaImporting.fmImporting.resources
+obj\Debug\QTeklaImporting.Properties.Resources.resources
+obj\Debug\QTeklaImporting.csproj.GenerateResource.Cache
+obj\Debug\QTeklaImporting.dll
+obj\Debug\QTeklaImporting.pdb

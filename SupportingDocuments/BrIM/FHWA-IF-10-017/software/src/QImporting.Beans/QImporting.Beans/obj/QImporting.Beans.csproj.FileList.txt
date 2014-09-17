@@ -1,0 +1,14 @@
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\QImporting.Beans.dll
+bin\Release\QImporting.Beans.dll
+bin\Release\QImporting.Beans.pdb
+obj\Release\QImporting.Beans.pdb
+bin\Release\QCS.Utils.dll
+bin\Release\QCS.Utils.pdb
+bin\Debug\QImporting.Beans.dll
+bin\Debug\QImporting.Beans.pdb
+bin\Debug\QCS.Utils.dll
+bin\Debug\QCS.Utils.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\QImporting.Beans.dll
+obj\Debug\QImporting.Beans.pdb

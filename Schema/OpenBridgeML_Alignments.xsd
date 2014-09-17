@@ -1,0 +1,545 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.wsdot.wa.gov/OpenBridgeML/Alignments"
+           xmlns:bxa="http://www.wsdot.wa.gov/OpenBridgeML/Alignments"
+           xmlns:bxg="http://www.wsdot.wa.gov/OpenBridgeML/Geometry"
+           xmlns:bxu="http://www.wsdot.wa.gov/OpenBridgeML/Units">
+  <xs:annotation>
+    <xs:documentation>
+      This schema defines the OpenBridgeML protocol for modeling surface geometry including alignments, profiles, and surface templates.
+    </xs:documentation>
+  </xs:annotation>
+
+   <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Units" schemaLocation="OpenBridgeML_Units.xsd" />
+   <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Geometry" schemaLocation="OpenBridgeML_Geometry.xsd" />
+
+   <xs:complexType name="StationType">
+      <xs:annotation>
+         <xs:documentation>
+            Defines a station, including the station zone index if station equations are used
+         </xs:documentation>
+      </xs:annotation>
+      <xs:simpleContent>
+         <xs:extension base="bxu:LengthValueType">
+            <xs:attribute name="stationZoneIndex" use="optional" type="xs:integer">
+               <xs:annotation>
+                  <xs:documentation>
+                     Defines the station zone. If omitted, the station is a normalized value
+                  </xs:documentation>
+               </xs:annotation>
+            </xs:attribute>
+         </xs:extension>
+      </xs:simpleContent>
+   </xs:complexType>
+
+  <!-- **************************************************** -->
+  <!-- Surface Types                                        -->
+  <!-- **************************************************** -->
+
+   <xs:simpleType name="SlopeTypeEnum">
+      <xs:annotation>
+         <xs:documentation>
+            Describes how a slope is measured. H = horizonal (rise/1), V = vertical (1/run).
+            Superelevations are not applied to slopes with this attribute. Use this attribute
+            for things like sidewalk, curb, and gutters.
+         </xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="H"/>
+         <xs:enumeration value="V"/>
+      </xs:restriction>
+   </xs:simpleType>
+
+   <xs:complexType name="SlopeType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines the slope of a segment in a surface template. Looking ahead on station, slopes that are upwards to the right are positive.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:double">
+         <xs:attribute name="option" use="optional" type="bxa:SlopeTypeEnum">
+            <xs:annotation>
+               <xs:documentation>
+                  Defines how the slope is measured. When this attribute is used superelevations are not applied to this segment.
+                  When omitted, the slope is measured horizontally (rise/1).
+               </xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="SegmentType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a segment in a Surface Template. Segments are layed out left to right, looking ahead on station.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Width" type="bxu:PositiveLengthValueType" />
+      <xs:element name="Slope" type="bxa:SlopeType" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="SegmentsType">
+    <xs:annotation>
+      <xs:documentation>
+         A collection of Segment
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Segment" type="bxa:SegmentType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="EdgeTypeEnum">
+    <xs:annotation>
+      <xs:documentation>
+        Defines the edge of a Segment
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="left" />
+      <xs:enumeration value="right" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="RidgePointType">
+    <xs:annotation>
+      <xs:documentation>
+        Identifies a ridge point in a section Template. Ridge points occur at the boundary between Segments
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="segmentRef" type="xs:string" />
+    <xs:attribute name="edge" type="bxa:EdgeTypeEnum" />
+  </xs:complexType>
+
+  <xs:complexType name="TemplateRefType">
+    <xs:annotation>
+      <xs:documentation>Defines a Template as a copy of a previously defined Template</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Station" type="bxa:StationType" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="optional"/>
+    <xs:attribute name="ref" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="TemplateType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines the cross-section of a surface. Surface templates need not define superelevations.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Station" type="bxa:StationType">
+        <xs:annotation>
+          <xs:documentation>
+            Station on the alignment where this template is applied
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Segments" type="bxa:SegmentsType" minOccurs="1" maxOccurs="1"/>
+      <!-- NOTE: Implementations must ensure all templates have the same number of <Segment> elements -->
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Identification for this template for use at subsequent locations
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+   <xs:complexType name="SuperTransitionType">
+      <xs:annotation>
+         <xs:documentation>
+            Defines a superelevation transition. If the transition type is omitted, a linear transition is assumed.
+         </xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="Station" type="bxa:StationType">
+            <xs:annotation>
+               <xs:documentation>Station where the superelevation transition begins or ends.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+            <xs:element name="Parabolic" minOccurs="0" maxOccurs="1">
+               <!--
+               NOTE: Implementations must ensure that L1 + L2 does not exceed the transition length
+               -->
+               <xs:annotation>
+                  <xs:documentation>A double parabolic transition of the cross slope. If omitted, a linear transition is assumed.</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="L1" type="bxu:LengthValueType">
+                        <xs:annotation>
+                           <xs:documentation>Length of the first parabola</xs:documentation>
+                        </xs:annotation>
+                     </xs:element>
+                     <xs:element name="L2" type="bxu:LengthValueType">
+                        <xs:annotation>
+                           <xs:documentation>Length of the second parabola</xs:documentation>
+                        </xs:annotation>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+
+   <xs:complexType name="SuperelevationType">
+      <!-- 
+      NOTE: Implementations must verify that the stations are in ascending order.
+      -->
+      <xs:annotation>
+         <xs:documentation>
+            Defines a superelevation.
+         </xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="BeginTransition" type="bxa:SuperTransitionType">
+            <xs:annotation>
+               <xs:documentation>Station where the superelevation transition begins</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="BeginFullSuper" type="bxa:StationType">
+            <xs:annotation>
+               <xs:documentation>Station where full superelevation begins</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Rate" type="xs:double">
+            <xs:annotation>
+               <xs:documentation>Full superelevation rate. Looking ahead on station, slopes up and to the right are positive and slopes down and to the right are negative.</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="EndFullSuper" type="bxa:StationType">
+            <xs:annotation>
+               <xs:documentation>Station where full superelevation ends</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="EndTransition" type="bxa:SuperTransitionType">
+            <xs:annotation>
+               <xs:documentation>Station where the superelevation transition ends</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="PivotPoint" type="bxa:RidgePointType">
+            <xs:annotation>
+               <xs:documentation>Ridge point about which the superelevation pivots</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+
+   <xs:complexType name="SuperelevationsType">
+      <xs:annotation>
+         <xs:documentation>
+            Collection of Superelevations
+         </xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="Superelevation" type="bxa:SuperelevationType" minOccurs="1" maxOccurs="unbounded" />
+      </xs:sequence>
+   </xs:complexType>
+
+   <xs:complexType name="WideningType">
+      <xs:annotation>
+         <xs:documentation>
+            Modifies the width of a surface template.
+         </xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="BeginTransition" type="bxa:StationType">
+            <xs:annotation>
+               <xs:documentation>Station where the widening transition begins</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="BeginFullWidening" type="bxa:StationType">
+            <xs:annotation>
+               <xs:documentation>Station where the fully widening begins</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Width" type="bxu:LengthValueType">
+            <xs:annotation>
+               <xs:documentation>Width of the widening (positive to widen, negative to narrow)</xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:sequence minOccurs="1" maxOccurs="2">
+            <xs:annotation>
+               <xs:documentation>The widening can occur at up to 2 ridge points.</xs:documentation>
+            </xs:annotation>
+            <xs:element name="RidgePoint" type="bxa:RidgePointType"/>
+            <!-- 
+            NOTE: Implementations must ensure that when two ridge points are used they don't
+            refer to the same ridge line (e.g. It is invalid to specify widenings at
+            the right edge of segment 1 and the left edge of segment 2).
+            -->
+         </xs:sequence>
+         <xs:element name="EndFullWidening" type="bxa:StationType">
+            <xs:annotation>
+               <xs:documentation>
+                  Station where the full widening ends
+               </xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="EndTransition" type="bxa:StationType">
+            <xs:annotation>
+               <xs:documentation>
+                  Station where the widening transition ends
+               </xs:documentation>
+            </xs:annotation>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+
+   <xs:complexType name="WideningsType">
+      <xs:annotation>
+         <xs:documentation>
+            Collection of Widenings
+         </xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="Widening" type="bxa:WideningType" minOccurs="1" maxOccurs="unbounded" />
+      </xs:sequence>
+   </xs:complexType>
+
+   <xs:complexType name="SurfaceType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a surface. Typically this is the roadway surface, however it is more general then that. It is any surface associated with the alignment.
+      </xs:documentation>
+    </xs:annotation>
+     <xs:sequence>
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="Template" type="bxa:TemplateType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            Describes the cross-section of the surface. If only one template is specified, it is applied at all cross sections. Surface segments are created between consequtive templates.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:unique name="uniqueSegmentId">
+          <xs:annotation>
+            <xs:documentation>
+              Segment.id must be unique within Template
+            </xs:documentation>
+          </xs:annotation>
+          <xs:selector xpath="Segments/Segment"/>
+          <xs:field xpath="@id" />
+        </xs:unique>
+
+        <xs:keyref name="refSegmentId" refer="bxa:uniqueSegmentId">
+          <xs:annotation>
+            <xs:documentation>
+              Ridge points must refer to a valid Segment.id
+            </xs:documentation>
+          </xs:annotation>
+          <xs:selector xpath="Alignment|ProfileGrade|LeftPivot|RightPivot"/>
+          <xs:field xpath="@segmentRef" />
+        </xs:keyref>
+      </xs:element>
+      <xs:element name="TemplateRef" type="bxa:TemplateRefType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:choice>
+
+     <xs:element name="Alignment" type="bxa:RidgePointType"/>
+     <xs:element name="ProfileGrade" type="bxa:RidgePointType"/>
+     <xs:element name="Superelevations" type="bxa:SuperelevationsType"/>
+     <xs:element name="Widenings" type="bxa:WideningsType"/>
+     </xs:sequence>
+  </xs:complexType>
+
+   <xs:complexType name="SurfacesType">
+      <xs:annotation>
+         <!-- 
+         NOTE: Implementations must ensure that surfaces do not overlap
+         -->
+         <xs:documentation>
+            A collection of Surfaces. More than one surface can be defined along an alignment. 
+            Surfaces may not overlap, however they may be a gap between surfaces. The station
+            range for a surface is defined by the stations of the first and last template.
+         </xs:documentation>
+      </xs:annotation>
+      <xs:sequence minOccurs="1" maxOccurs="unbounded">
+         <xs:element name="Surface" type="bxa:SurfaceType">
+            <xs:unique name="uniqueTemplateId">
+               <xs:annotation>
+                  <xs:documentation>
+                     Template.id must be unique within Surface
+                  </xs:documentation>
+               </xs:annotation>
+               <xs:selector xpath="Template"/>
+               <xs:field xpath="@id" />
+            </xs:unique>
+
+            <xs:keyref name="refTemplateId" refer="bxa:uniqueTemplateId">
+               <xs:annotation>
+                  <xs:documentation>
+                     TemplateRef must refer to a valid Template.id
+                  </xs:documentation>
+               </xs:annotation>
+               <xs:selector xpath="TemplateRef"/>
+               <xs:field xpath="@ref"/>
+            </xs:keyref>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+
+  <!-- **************************************************** -->
+  <!-- Vertical Profile Types                               -->
+  <!-- **************************************************** -->
+  <xs:complexType name="VerticalCurveType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a vertical curve
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="PVIStation" type="bxa:StationType" />
+      <xs:element name="ExitGrade" type="xs:double" />
+      <xs:element name="L1" type="bxu:PositiveLengthValueType" />
+      <xs:element name="L2" type="bxu:PositiveLengthValueType" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="VerticalCurvesType">
+    <xs:annotation>
+      <xs:documentation>
+        Collection of sequential vertical curves
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="VerticalCurve" type="bxa:VerticalCurveType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ProfileType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines the vertical profile of the alignment.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Station" type="bxa:StationType" />
+      <xs:element name="Elevation" type="bxu:LengthValueType" />
+      <xs:element name="Grade" type="xs:double" />
+      <xs:sequence>
+        <xs:element name="VerticalCurves" type="bxa:VerticalCurvesType" minOccurs="0" maxOccurs="1" />
+      </xs:sequence>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- **************************************************** -->
+  <!-- Horizontal Alignment Types                           -->
+  <!-- **************************************************** -->
+  <xs:complexType name="EquationType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a station equation
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="BackStation" type="bxu:LengthValueType"/>
+      <xs:element name="AheadStation" type="bxu:LengthValueType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="EquationsType">
+    <xs:annotation>
+      <xs:documentation>
+        A collection of station equations
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Equation" type="bxa:EquationType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="StartPointOnTangentType">
+    <xs:complexContent>
+      <xs:extension base="bxg:Point2DType">
+        <xs:sequence>
+          <xs:element name="Station" type="bxa:StationType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="PointOfInterestionType">
+    <xs:complexContent>
+      <xs:extension base="bxg:Point2DType">
+        <xs:sequence>
+          <xs:element name="Radius" type="bxu:PositiveLengthValueType" minOccurs="0" maxOccurs="1"/>
+           <xs:element name="EntrySpiralLength" type="bxu:PositiveLengthValueType" minOccurs="0" maxOccurs="1"/>
+           <xs:element name="ExitSpiralLength" type="bxu:PositiveLengthValueType" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+   <xs:complexType name="AlignmentPathType">
+      <xs:annotation>
+         <xs:documentation>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="Start" type="bxa:StartPointOnTangentType" />
+         <xs:element name="PI" type="bxa:PointOfInterestionType" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="End" type="bxg:Point2DType" />
+         <xs:element name="Equations" type="bxa:EquationsType" minOccurs="0" maxOccurs="1" />
+      </xs:sequence>
+   </xs:complexType>
+
+  <xs:complexType name="AlignmentType">
+    <xs:annotation>
+      <xs:documentation>
+        Horizontal alignment, profile grade line (PGL) or chain representing a design reference line.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+       <xs:element name="Path" type="bxa:AlignmentPathType" />
+     <xs:element name="Profile" type="bxa:ProfileType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Surfaces" type="bxa:SurfacesType" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+     
+    <xs:attribute name="name" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>
+          Defines the name of the alignment so that it can be refered to by dependent elements.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="featureCode" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Defines the symbology and annotation of the alignment (such as L-Line, Br-Line, etc.)
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="AlignmentsType">
+    <xs:annotation>
+      <xs:documentation>
+        A collection of horizontal Alignments
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Alignment" type="bxa:AlignmentType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="Alignments" type="bxa:AlignmentsType">
+    <xs:key name="uAlignmentName">
+      <xs:annotation>
+        <xs:documentation>
+          Alignment.name must be unique within the Alignments collection
+        </xs:documentation>
+      </xs:annotation>
+      <xs:selector xpath="Alignment"/>
+      <xs:field xpath="@name"/>
+    </xs:key>
+  </xs:element>
+
+</xs:schema>

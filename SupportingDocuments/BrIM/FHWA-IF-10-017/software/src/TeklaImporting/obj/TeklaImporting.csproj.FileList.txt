@@ -1,0 +1,9 @@
+bin\Debug\TeklaImporting.exe
+bin\Debug\TeklaImporting.pdb
+bin\Debug\TeklaBeans.dll
+bin\Debug\TeklaBeans.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\TeklaImporting.exe
+obj\Debug\TeklaImporting.pdb
+bin\Debug\QCS.Utils.dll
+bin\Debug\QCS.Utils.pdb

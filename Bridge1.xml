@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<OpenBridgeML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+              xsi:schemaLocation="OpenBridgeML.xsd"
+              xmlns:bxu="http://www.wsdot.wa.gov/OpenBridgeML/Units"
+              xmlns:bxa="http://www.wsdot.wa.gov/OpenBridgeML/Alignments"
+              xmlns:bxg="http://www.wsdot.wa.gov/OpenBridgeML/Geometry"
+              xmlns:bxf="http://www.wsdot.wa.gov/OpenBridgeML/Framing"
+              xmlns:lx="http://www.landxml.org/schema/LandXML-1.2"
+              >
+
+  <!-- 
+   OpenBridgeML documents begin with an optional UnitsDeclaration. If omitted, OpenBridgeML processors
+   must support the standard unit types and standard units of measure. All quantities with an associated
+   unit of measure are limited to the standard OpenBridgeML unit types and units of measure unless they 
+   are extended with <ExtendedUnits>. All quantities in an OpenBridgeML instance document with an 
+   associated unit of measure, where the unit of measure is not explicitly stated, are assumed to be
+   consistent with the OpenBridgeML fundamental system of units (kg,m,sec,C,rad). The assumed set
+   of consistent units can be modifed with <ConsistentUnits>.
+   
+   Three things are happing in the example below. 
+   (1) The unit of measure Acre is not an OpenBridgeML unit of measure. 
+   The unit of measures are extended with <UnitOfMeasure>
+   
+   (2) Velocity is not an OpenBridgeML unit type. This unit type and associated units
+   of measure are defined with <UnitTypes><UnitType><UnitOfMeasure>...
+   
+   (3) Quantities with undeclared units of measure are consistent with fundamental units
+   of slug, ft, sec, F, and rad. Forces would be in kips and stress in psf. This is
+   accomplished with <ConsistentUnits>.
+   -->
+  <bxu:UnitsDeclaration>
+    <ExtendedUnits>
+      <UnitOfMeasure name="Acre" UnitType="Length2">
+        <ConversionFactor>4046.8564224</ConversionFactor>
+        <UnitSystem>unitsUS</UnitSystem>
+      </UnitOfMeasure>
+      <UnitTypes>
+        <UnitType name="velocity" mass="0.0" length="1.0" time="-1.0" temperature="0.0" angle="0.0">
+          <UnitOfMeasure name="mps">
+            <ConversionFactor>1.0</ConversionFactor>
+            <UnitSystem>unitsSI</UnitSystem>
+          </UnitOfMeasure>
+          <UnitOfMeasure name="Kph">
+            <ConversionFactor>0.27777777777777777777777778</ConversionFactor>
+            <UnitSystem>unitsSI</UnitSystem>
+          </UnitOfMeasure>
+          <UnitOfMeasure name="fps">
+            <ConversionFactor>0.3048</ConversionFactor>
+            <UnitSystem>unitsUS</UnitSystem>
+          </UnitOfMeasure>
+          <UnitOfMeasure name="mph">
+            <ConversionFactor>0.44704</ConversionFactor>
+            <UnitSystem>unitsUS</UnitSystem>
+          </UnitOfMeasure>
+        </UnitType>
+      </UnitTypes>
+    </ExtendedUnits>
+    <ConsistentUnits mass="slug" length="ft" time="sec" temperature="F" angle="rad" />
+  </bxu:UnitsDeclaration>
+
+  <!-- "Global" geometry definition... typically used when defining geometry for an entire project
+  with many related bridges (like an interchange). 
+  -->
+  
+  <!-- Alignments defined LandXML (this could be imported from an external source)-->
+  <lx:LandXML time="00:00:00.00+08:00" date="2013-08-12" version="1.2">
+    <lx:Alignments>
+      <lx:Alignment name="EAST.HRZ" staStart="999.99" length="1204.181">
+        <lx:CoordGeom>
+          <lx:Line dir="0.6747" length="5.0668">
+            <lx:Start>2726.4093</lx:Start>
+            <lx:End> 2729.1652 4096.956</lx:End>
+          </lx:Line>
+        </lx:CoordGeom>
+      </lx:Alignment>
+    </lx:Alignments>
+  </lx:LandXML>
+
+  <!-- Alignments defined by OpenBridgeML -->
+  <bxa:Alignments>
+     <Alignment name="a1">
+        <Path>
+        <Start>
+           <X>30000.</X>
+           <Y>30000.</Y>
+           <Station>3716.32</Station>
+        </Start>
+        <PI>
+           <X>30800.0</X>
+           <Y>29600.0</Y>
+           <Radius>1432.94</Radius>
+        </PI>
+        <PI>
+           <X>31600.0</X>
+           <Y>29600.0</Y>
+        </PI>
+        <End>
+           <X>32200.</X>
+           <Y>29550.</Y>
+        </End>
+        <Equations>
+           <Equation>
+              <BackStation>4531.53</BackStation>
+              <AheadStation>4550.00</AheadStation>
+           </Equation>
+           <Equation>
+              <BackStation>5011.73</BackStation>
+              <AheadStation>4890.00</AheadStation>
+           </Equation>
+        </Equations>
+        </Path>
+     </Alignment>
+     <Alignment name="a3">
+        <Path>
+           <Start>
+              <X>30000.</X>
+              <Y>30000.</Y>
+              <Station>3716.32</Station>
+           </Start>
+           <PI>
+              <X>30800.0</X>
+              <Y>29600.0</Y>
+              <Radius>1432.94</Radius>
+           </PI>
+           <PI>
+              <X>31600.0</X>
+              <Y>29600.0</Y>
+           </PI>
+           <End>
+              <X>32200.</X>
+              <Y>29550.</Y>
+           </End>
+        </Path>
+     </Alignment>
+  </bxa:Alignments>
+
+  <Bridge name="Bridge1">
+    
+    <!-- "local" alignment definition. Typically used when you have a self-contained
+    bridge model or when you have a collection of bridges that aren't geographically related
+    such as the alignment component of a bridge description for bridges in a permit routing
+    application. -->
+    <Alignments>
+      <Alignment name="a4">
+         <Path>
+            <Start>
+               <X>30000.</X>
+               <Y>30000.</Y>
+               <Station>3716.32</Station>
+            </Start>
+            <PI>
+               <X>30800.0</X>
+               <Y>29600.0</Y>
+               <Radius>1432.94</Radius>
+            </PI>
+            <PI>
+               <X>31600.0</X>
+               <Y>29600.0</Y>
+            </PI>
+            <End>
+               <X>32200.</X>
+               <Y>29550.</Y>
+            </End>
+         </Path>
+         <Profile>
+            <Station>1000.00</Station>
+            <Elevation>123.45</Elevation>
+            <Grade>0.05</Grade>
+            <VerticalCurves>
+               <VerticalCurve>
+                  <PVIStation>1000.0</PVIStation>
+                  <ExitGrade>-0.03</ExitGrade>
+                  <L1 unit="ft">250.</L1>
+                  <L2 unit="m">0.0</L2>
+               </VerticalCurve>
+            </VerticalCurves>
+         </Profile>
+         <Surfaces>
+         <Surface>
+            <Template id="1+00">
+               <Station>100.0</Station>
+              <Segments>
+                <Segment id="1">
+                  <Width>16</Width>
+                  <Slope>0.02</Slope>
+                </Segment>
+                <Segment id="2">
+                  <Width>16</Width>
+                  <Slope>-0.02</Slope>
+                </Segment>
+              </Segments>
+            </Template>
+           <TemplateRef id="2+00" ref="1+00">
+             <Station>200.0</Station>
+           </TemplateRef>
+           <TemplateRef ref="5+00">
+             <Station>300.0</Station>
+           </TemplateRef>
+           <Template id="5+00">
+             <Station>400.0</Station>
+             <Segments>
+               <Segment id="1">
+                 <Width>16</Width>
+                 <Slope>0.02</Slope>
+               </Segment>
+               <Segment id="2">
+                 <Width>16</Width>
+                 <Slope>-0.02</Slope>
+               </Segment>
+             </Segments>
+           </Template>
+           <Alignment segmentRef="1" edge="right"/>
+           <ProfileGrade segmentRef="1" edge="right"/>
+            <Superelevations>
+            <Superelevation>
+               <BeginTransition>
+                  <Station>100</Station>
+               </BeginTransition>
+               <BeginFullSuper>200</BeginFullSuper>
+               <Rate>0.06</Rate>
+               <EndFullSuper>300</EndFullSuper>
+               <EndTransition>
+                  <Station>400</Station>
+                  <Parabolic>
+                     <L1>70</L1>
+                     <L2>30</L2>
+                  </Parabolic>
+               </EndTransition>
+               <PivotPoint segmentRef="1" edge="right"/>
+            </Superelevation>
+            </Superelevations>
+            <Widenings>
+            <Widening>
+               <BeginTransition>100</BeginTransition>
+               <BeginFullWidening>200</BeginFullWidening>
+               <Width>5.0</Width>
+               <RidgePoint segmentRef="1" edge="left"/>
+               <RidgePoint segmentRef="1" edge="right"/>
+               <EndFullWidening>300</EndFullWidening>
+               <EndTransition>400</EndTransition>
+            </Widening>
+            </Widenings>
+         </Surface>
+         </Surfaces>
+      </Alignment>
+    </Alignments>
+    <PierLines alignmentRef="a1">
+      <PierLine id="1">
+        <Station unit="ft">100.0</Station>
+      </PierLine>
+      <PierLine id="2" alignmentRef="EAST.HRZ">
+        <Station unit="ft">200.0</Station>
+      </PierLine>
+      <PierLine id="3" alignmentRef="a3">
+        <Station unit="ft">300.0</Station>
+      </PierLine>
+    </PierLines>
+  </Bridge>
+</OpenBridgeML>
+

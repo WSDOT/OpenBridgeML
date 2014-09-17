@@ -1,0 +1,7 @@
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\TeklaBeans.dll
+obj\Debug\TeklaBeans.pdb
+bin\Debug\TeklaBeans.dll
+bin\Debug\TeklaBeans.pdb
+bin\Debug\QCS.Utils.dll
+bin\Debug\QCS.Utils.pdb

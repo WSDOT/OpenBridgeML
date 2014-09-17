@@ -1,0 +1,12 @@
+D:\CSharpProjects\QImporting\TeklaBeans\obj\Release\ResolveAssemblyReference.cache
+D:\CSharpProjects\QImporting\TeklaBeans\bin\Release\TeklaBeans.dll
+D:\CSharpProjects\QImporting\TeklaBeans\bin\Release\TeklaBeans.pdb
+D:\CSharpProjects\QImporting\TeklaBeans\obj\Release\TeklaBeans.dll
+D:\CSharpProjects\QImporting\TeklaBeans\obj\Release\TeklaBeans.pdb
+D:\CSharpProjects\QImporting\TeklaBeans\bin\Debug\TeklaBeans.dll
+D:\CSharpProjects\QImporting\TeklaBeans\bin\Debug\TeklaBeans.pdb
+D:\CSharpProjects\QImporting\TeklaBeans\obj\Debug\ResolveAssemblyReference.cache
+D:\CSharpProjects\QImporting\TeklaBeans\obj\Debug\TeklaBeans.dll
+D:\CSharpProjects\QImporting\TeklaBeans\obj\Debug\TeklaBeans.pdb
+D:\CSharpProjects\QImporting\TeklaBeans\bin\Debug\QCS.Utils.dll
+D:\CSharpProjects\QImporting\TeklaBeans\bin\Debug\QCS.Utils.pdb

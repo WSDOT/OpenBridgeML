@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns:bxu="http://www.wsdot.wa.gov/OpenBridgeML/Units"
+  xmlns:bxa="http://www.wsdot.wa.gov/OpenBridgeML/Alignments"
+  xmlns:bxf="http://www.wsdot.wa.gov/OpenBridgeML/Framing"
+  xmlns:bxg="http://www.wsdot.wa.gov/OpenBridgeML/Geometry"
+  xmlns:lx="http://www.landxml.org/schema/LandXML-1.2">
+
+  <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Units" schemaLocation="OpenBridgeML_Units.xsd" />
+   <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Alignments" schemaLocation="OpenBridgeML_Alignments.xsd" />
+   <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Geometry" schemaLocation="OpenBridgeML_Geometry.xsd" />
+   <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Framing" schemaLocation="OpenBridgeML_Framing.xsd" />
+   <xs:import namespace="http://www.landxml.org/schema/LandXML-1.2" schemaLocation="LandXML-1.2.xsd" />
+  
+
+  <!-- 
+  | The current work is defining generic geometry and alignments. Alignments includes
+  | profiles and cross sections tool. The Pier type defined here is just a prototype
+  | that is used to test alignment name references.
+  -->
+
+  <xs:complexType name="Bridge">
+    <xs:sequence>
+      <xs:element ref="lx:LandXML" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="Alignments" type="bxa:AlignmentsType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="PierLines" type="bxf:PierLinesType"/>
+    </xs:sequence>
+     
+     <xs:attribute name="name" type="xs:string">
+        <xs:annotation>
+           <xs:documentation>
+              Defines the name of the bridge so that it can be refered to by dependent elements.
+           </xs:documentation>
+        </xs:annotation>
+     </xs:attribute>
+  </xs:complexType>
+
+
+   <xs:element name="OpenBridgeML">
+      <xs:annotation>
+         <xs:documentation>
+            This is the root of OpenBridgeML
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+        <xs:annotation>
+          <xs:documentation>
+            This is the main sequence of elements in an OpenBridgeML instance document.
+          </xs:documentation>
+        </xs:annotation>
+         <xs:sequence>
+           <xs:element ref="bxu:UnitsDeclaration" minOccurs="0" maxOccurs="1">
+             <xs:annotation>
+               <xs:documentation>
+                 The UnitsDeclaration estabilishes global extensions to the standard unit types and units of measure.
+                 Consistent units can also be declared.
+               </xs:documentation>
+             </xs:annotation>
+           </xs:element>
+
+           <xs:element ref="lx:LandXML" minOccurs="0" maxOccurs="1"/>
+           <xs:element ref="bxa:Alignments" minOccurs="0" maxOccurs="1"/>
+           
+           <xs:element name="Bridge" type="Bridge"/>
+         </xs:sequence>
+      </xs:complexType>
+
+     <xs:key name="uniqueAlignmentName">
+       <xs:annotation>
+         <xs:documentation>
+           Alignment names must be unique.
+         </xs:documentation>
+       </xs:annotation>
+       <xs:selector xpath="lx:LandXML/lx:Alignments/lx:Alignment|bxa:Alignments/Alignment|Bridge/lx:LandXML/lx:Alignments/lx:Alignment|Bridge/Alignments/Alignment"/>
+       <xs:field xpath="@name"/>
+     </xs:key>
+     
+     <xs:keyref name="refAlignmentName" refer="uniqueAlignmentName">
+       <xs:annotation>
+         <xs:documentation>
+           The alignment name refered to in the Pier element must be one of the Alignment.name
+           values defined in the LandXML\Alignments\Alignment, Alignments\Alignment, 
+           Bridge\LandXML\Alignments\Alignment or Bridge\Aligments\Alignment branches
+         </xs:documentation>
+       </xs:annotation>
+       <xs:selector xpath="Bridge/Piers/Pier"/>
+       <xs:field xpath="@alignmentRef"/>
+     </xs:keyref>
+   </xs:element>
+
+
+</xs:schema>

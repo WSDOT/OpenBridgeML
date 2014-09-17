@@ -1,0 +1,28 @@
+=================
+	Guideline
+=================
+
+Opis/Virtis (BRIDGEWare):
+==============================================
+
+Input: Xml format linkage file (from MathCAD, Tekla, Leap or Opis/Virtis itself)
+-----------------------------------------------------------------------------
+	1. Deck: geometry of deck, characteristic points on deck...
+	2. Girders: girder section data (width and depth of flange and web), the geometry of girder, reinforcement (optional)...
+	
+	csv format linkage file for inspection data updating
+	-----------------------------------------------------------------------------
+	1. Section loss: the thickness loss of web and flange...
+	2. Pre-stressed strands force reduction...
+	
+Modeling and rating in Opis/Virtis (BRIDGEWare):
+------------------------------------------------------------------------------
+	1. Parametrically Modeling: Deck, Girders, reinforcement, material, Stiffeners,...
+	2. Rating: moment, shear, rating factor, specification checking...
+	
+Output: Xml format linkage file	which contains the bridge structural data (To Tekla etc.)
+------------------------------------------------------------------------------
+	1. Deck: geometry of deck, characteristic points on deck, ...
+	2. Girders: girder section data (width and depth of flange and web), the geometry of girder, reinforcement, the x, y, z (elevation) values of characteristic points along the centerline of the top surface of each girder, reinforcement data...	
+	
+	

@@ -1,0 +1,15 @@
+Guideline:
+
+MicroStation
+
+Input: dgn file
+	1. 3D bridge model: including bridge top view, side view, section view and 3D view
+	
+Output: dgn file
+  1. 2D bridge drawings: plan view, section view
+
+	
+
+
+	
+	

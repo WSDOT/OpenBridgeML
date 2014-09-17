@@ -1,0 +1,11 @@
+D:\CSharpProjects\TeklaConverter\obj\Debug\ResolveAssemblyReference.cache
+D:\CSharpProjects\TeklaConverter\bin\Debug\TeklaConverter.exe
+D:\CSharpProjects\TeklaConverter\bin\Debug\TeklaConverter.pdb
+D:\CSharpProjects\TeklaConverter\bin\Debug\QImporting.Beans.dll
+D:\CSharpProjects\TeklaConverter\bin\Debug\TeklaBeans.dll
+D:\CSharpProjects\TeklaConverter\bin\Debug\QCS.Utils.dll
+D:\CSharpProjects\TeklaConverter\bin\Debug\TeklaBeans.pdb
+D:\CSharpProjects\TeklaConverter\bin\Debug\QCS.Utils.pdb
+D:\CSharpProjects\TeklaConverter\bin\Debug\QImporting.Beans.pdb
+D:\CSharpProjects\TeklaConverter\obj\Debug\TeklaConverter.exe
+D:\CSharpProjects\TeklaConverter\obj\Debug\TeklaConverter.pdb

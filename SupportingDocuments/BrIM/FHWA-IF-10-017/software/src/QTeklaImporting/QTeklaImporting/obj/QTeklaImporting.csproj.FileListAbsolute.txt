@@ -1,0 +1,8 @@
+D:\CSharpProjects\QTeklaImporting\QTeklaImporting\bin\Debug\QTeklaImporting.dll
+D:\CSharpProjects\QTeklaImporting\QTeklaImporting\bin\Debug\QTeklaImporting.pdb
+D:\CSharpProjects\QTeklaImporting\QTeklaImporting\obj\Debug\ResolveAssemblyReference.cache
+D:\CSharpProjects\QTeklaImporting\QTeklaImporting\obj\Debug\QTeklaImporting.fmImporting.resources
+D:\CSharpProjects\QTeklaImporting\QTeklaImporting\obj\Debug\QTeklaImporting.Properties.Resources.resources
+D:\CSharpProjects\QTeklaImporting\QTeklaImporting\obj\Debug\QTeklaImporting.csproj.GenerateResource.Cache
+D:\CSharpProjects\QTeklaImporting\QTeklaImporting\obj\Debug\QTeklaImporting.dll
+D:\CSharpProjects\QTeklaImporting\QTeklaImporting\obj\Debug\QTeklaImporting.pdb
