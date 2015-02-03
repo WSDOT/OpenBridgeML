@@ -526,6 +526,46 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\Schema\OpenBridgeML_Pier.cxx"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+						PrecompiledHeaderFile="$(IntDir)\$(TargetName).pch"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+						PrecompiledHeaderFile="$(IntDir)\$(TargetName).pch"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+						PrecompiledHeaderFile="$(IntDir)\$(TargetName).pch"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+						PrecompiledHeaderFile="$(IntDir)\$(TargetName).pch"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
 				RelativePath=".\Schema\OpenBridgeML_Units.cxx"
 				>
 				<FileConfiguration
@@ -625,6 +665,10 @@
 			</File>
 			<File
 				RelativePath=".\Schema\OpenBridgeML_Geometry.hxx"
+				>
+			</File>
+			<File
+				RelativePath=".\Schema\OpenBridgeML_Pier.hxx"
 				>
 			</File>
 			<File
@@ -737,6 +781,10 @@
 			</File>
 			<File
 				RelativePath=".\Schema\OpenBridgeML_Geometry.xsd"
+				>
+			</File>
+			<File
+				RelativePath=".\Schema\OpenBridgeML_Pier.xsd"
 				>
 			</File>
 			<File

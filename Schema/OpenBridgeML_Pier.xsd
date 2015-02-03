@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.wsdot.wa.gov/OpenBridgeML/Pier"
+           xmlns:bxp="http://www.wsdot.wa.gov/OpenBridgeML/Pier"
+           xmlns:bxu="http://www.wsdot.wa.gov/OpenBridgeML/Units">
+   <xs:annotation>
+      <xs:documentation>
+         This schema defines the OpenBridgeML protocol for modeling bridge piers and bents.
+      </xs:documentation>
+   </xs:annotation>
+
+   <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Units" schemaLocation="OpenBridgeML_Units.xsd" />
+
+   <xs:simpleType name="IdealizedSupportEnum">
+      <xs:annotation>
+         <xs:documentation>
+            Defines idealized support conditions types
+         </xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="Fixed"/>
+         <xs:enumeration value="Pinned" />
+      </xs:restriction>
+   </xs:simpleType>
+
+   <xs:complexType name="IdealizedSupportType">
+      <xs:annotation>
+         <xs:documentation>
+            Defines an idealized support condition
+         </xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="Longitudinal" type="bxp:IdealizedSupportEnum">
+            <xs:annotation>
+               <xs:documentation>
+                  Defines the idealized support condition in the plain of the bent
+               </xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="Transverse" type="bxp:IdealizedSupportEnum">
+            <xs:annotation>
+               <xs:documentation>
+                  Defines the idealized support condition in the plain of the bridge
+               </xs:documentation>
+            </xs:annotation>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+
+   <xs:complexType name="BaseElement">
+      <xs:annotation>
+         <xs:documentation>
+            Defines the structural element at the base of a column
+         </xs:documentation>
+      </xs:annotation>
+      <xs:choice>
+         <xs:element name="IdealizedSupport" type="bxp:IdealizedSupportType"/>
+         <!-- add other choices in the future -->
+      </xs:choice>
+   </xs:complexType>
+
+   <xs:complexType name="ColumnType">
+      <xs:annotation>
+         <xs:documentation>
+            Models a column
+         </xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="Height" type="bxu:LengthValueType"></xs:element>
+         <xs:element name="BaseElement" type="bxp:BaseElement"/>
+      </xs:sequence>
+   </xs:complexType>
+
+   <xs:complexType name="ColumnsType">
+      <xs:annotation>
+         <xs:documentation>
+            Models the sequence of columns in a pier, left to right, looking ahead on station
+         </xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="Column" type="bxp:ColumnType"/>
+         <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Spacing" type="bxu:LengthValueType"/>
+            <xs:element name="Column" type="bxp:ColumnType"/>
+         </xs:sequence>
+      </xs:sequence>
+   </xs:complexType>
+
+   <xs:complexType name="CapBeamType">
+      <xs:annotation>
+         <xs:documentation>
+            Models the cap beam
+         </xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="LeftOverhang" type="bxu:LengthValueType"/>
+         <xs:element name="RightOverhang" type="bxu:LengthValueType"/>
+      </xs:sequence>
+   </xs:complexType>
+
+   <xs:complexType name="Pier">
+      <xs:annotation>
+         <xs:documentation>
+            Models a pier
+         </xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="CapBeam" type="bxp:CapBeamType"/>
+         <xs:element name="Columns" type="bxp:ColumnsType"/>
+      </xs:sequence>
+   </xs:complexType>
+
+</xs:schema>

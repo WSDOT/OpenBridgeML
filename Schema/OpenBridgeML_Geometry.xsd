@@ -89,7 +89,7 @@
    </xs:simpleType>
 
    <!--
-   The intent of this is to ensure uniqueness in element id's of there was a <Geometry> section in the XML
+   The intent of this is to ensure uniqueness in element id's if there is a <Geometry> section in the XML instance document
    <xs:element name="Geometry">
     <xs:unique name="uniquePointId">
       <xs:selector xpath="Point"/>
