@@ -37,7 +37,7 @@
 			/>
 			<Tool
 				Name="C++/Tree Mapping Rule"
-				AdditionalOptions="--hxx-prologue &quot;#include &lt;ExportSymbols.h&gt;&quot;&#x0D;&#x0A;--cxx-prologue &quot;#include \&quot;stdafx.h\&quot;&quot;"
+				AdditionalOptions="--hxx-prologue &quot;#include &lt;ExportSymbols.h&gt;&quot; --cxx-prologue &quot;#include \&quot;stdafx.h\&quot;&quot;"
 				OutDir=".\Schema"
 				CharType="1"
 				GenSerialization="true"
