@@ -12,10 +12,10 @@
 
    <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Units" schemaLocation="OpenBridgeML_Units.xsd" />
 
-   <xs:simpleType name="IdealizedSupportEnum">
+   <xs:simpleType name="IdealizedFoundationEnum">
       <xs:annotation>
          <xs:documentation>
-            Defines idealized support conditions types
+            Defines an idealized foundation using simple boundary condition types
          </xs:documentation>
       </xs:annotation>
       <xs:restriction base="xs:string">
@@ -24,14 +24,14 @@
       </xs:restriction>
    </xs:simpleType>
 
-   <xs:complexType name="BaseElement">
+   <xs:complexType name="FoundationType">
       <xs:annotation>
          <xs:documentation>
-            Defines the structural element at the base of a column
+            Defines the structural foundation at the base of a column
          </xs:documentation>
       </xs:annotation>
       <xs:choice>
-         <xs:element name="IdealizedSupport" type="bxp:IdealizedSupportEnum"/>
+         <xs:element name="IdealizedFoundation" type="bxp:IdealizedFoundationEnum"/>
          <!-- add other choices in the future, like spread footing, shaft, etc -->
       </xs:choice>
    </xs:complexType>
@@ -44,7 +44,7 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="Height" type="bxu:LengthValueType"></xs:element>
-         <xs:element name="BaseElement" type="bxp:BaseElement"/>
+         <xs:element name="Foundation" type="bxp:FoundationType"/>
       </xs:sequence>
      <xs:attribute name="id" type="xs:string" use="optional"/>
    </xs:complexType>
