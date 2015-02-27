@@ -43,7 +43,10 @@
          </xs:documentation>
       </xs:annotation>
       <xs:sequence>
+        <xs:choice>
+         <xs:element name="BottomElevation" type="bxu:LengthValueType"></xs:element>
          <xs:element name="Height" type="bxu:LengthValueType"></xs:element>
+        </xs:choice>
          <xs:element name="Foundation" type="bxp:FoundationType"/>
       </xs:sequence>
      <xs:attribute name="id" type="xs:string" use="optional"/>
@@ -67,16 +70,23 @@
    <xs:complexType name="CapBeamType">
       <xs:annotation>
          <xs:documentation>
-            Models the cap beam
+            Models the cap beam.
          </xs:documentation>
       </xs:annotation>
       <xs:sequence>
-         <xs:element name="LeftOverhang" type="bxu:LengthValueType"/>
-         <xs:element name="RightOverhang" type="bxu:LengthValueType"/>
+        <xs:element name="LeftOverhang" type="bxu:LengthValueType"/>
+        <xs:element name="RightOverhang" type="bxu:LengthValueType"/>
+        <xs:element name="Width" type="bxu:LengthValueType"/>
+        <xs:element name="LeftSideHeight" type="bxu:LengthValueType"/>
+        <xs:element name="LeftSideTaperHeight" type="bxu:LengthValueType"/>
+        <xs:element name="LeftSideTaperLength" type="bxu:LengthValueType"/>
+        <xs:element name="RightSideHeight" type="bxu:LengthValueType"/>
+        <xs:element name="RightSideTaperHeight" type="bxu:LengthValueType"/>
+        <xs:element name="RightSideTaperLength" type="bxu:LengthValueType"/>
       </xs:sequence>
    </xs:complexType>
 
-   <xs:complexType name="Pier">
+   <xs:complexType name="PierType">
       <xs:annotation>
          <xs:documentation>
             Models a pier

@@ -21,7 +21,7 @@
   | that is used to test alignment name references.
   -->
 
-  <xs:complexType name="Bridge">
+  <xs:complexType name="BridgeType">
     <xs:sequence>
       <xs:element ref="lx:LandXML" minOccurs="0" maxOccurs="1"/>
       <xs:element name="Alignments" type="bxa:AlignmentsType" minOccurs="0" maxOccurs="unbounded" />
@@ -63,7 +63,7 @@
            <xs:element ref="lx:LandXML" minOccurs="0" maxOccurs="1"/>
            <xs:element ref="bxa:Alignments" minOccurs="0" maxOccurs="1"/>
            
-           <xs:element name="Bridge" type="Bridge"/>
+           <xs:element name="Bridge" type="BridgeType"/>
          </xs:sequence>
       </xs:complexType>
 
