@@ -169,6 +169,14 @@ Data Types for units of measure. These will generally be used as attributes such
     </xs:simpleContent>
   </xs:complexType>
 
+  <xs:complexType name="Length4ValueType">
+    <xs:simpleContent>
+      <xs:extension base="xs:double">
+        <xs:attribute name="unit" type="bxu:Length4UnitType" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
   <xs:complexType name="PressureValueType">
     <xs:simpleContent>
       <xs:extension base="xs:double">

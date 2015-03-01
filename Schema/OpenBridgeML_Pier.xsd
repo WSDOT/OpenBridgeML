@@ -77,12 +77,12 @@
         <xs:element name="LeftOverhang" type="bxu:LengthValueType"/>
         <xs:element name="RightOverhang" type="bxu:LengthValueType"/>
         <xs:element name="Width" type="bxu:LengthValueType"/>
-        <xs:element name="LeftSideHeight" type="bxu:LengthValueType"/>
-        <xs:element name="LeftSideTaperHeight" type="bxu:LengthValueType"/>
-        <xs:element name="LeftSideTaperLength" type="bxu:LengthValueType"/>
-        <xs:element name="RightSideHeight" type="bxu:LengthValueType"/>
-        <xs:element name="RightSideTaperHeight" type="bxu:LengthValueType"/>
-        <xs:element name="RightSideTaperLength" type="bxu:LengthValueType"/>
+        <xs:element name="LeftHeight" type="bxu:LengthValueType"/>
+        <xs:element name="LeftTaperHeight" type="bxu:LengthValueType"/>
+        <xs:element name="LeftTaperLength" type="bxu:LengthValueType"/>
+        <xs:element name="RightHeight" type="bxu:LengthValueType"/>
+        <xs:element name="RightTaperHeight" type="bxu:LengthValueType"/>
+        <xs:element name="RightTaperLength" type="bxu:LengthValueType"/>
       </xs:sequence>
    </xs:complexType>
 
