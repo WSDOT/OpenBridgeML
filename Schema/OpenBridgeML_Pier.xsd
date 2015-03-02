@@ -3,6 +3,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            targetNamespace="http://www.wsdot.wa.gov/OpenBridgeML/Pier"
            xmlns:bxp="http://www.wsdot.wa.gov/OpenBridgeML/Pier"
+           xmlns:bxg="http://www.wsdot.wa.gov/OpenBridgeML/Geometry"
            xmlns:bxu="http://www.wsdot.wa.gov/OpenBridgeML/Units">
    <xs:annotation>
       <xs:documentation>
@@ -10,9 +11,10 @@
       </xs:documentation>
    </xs:annotation>
 
-   <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Units" schemaLocation="OpenBridgeML_Units.xsd" />
+  <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Geometry" schemaLocation="OpenBridgeML_Geometry.xsd" />
+  <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Units" schemaLocation="OpenBridgeML_Units.xsd" />
 
-   <xs:simpleType name="IdealizedFoundationEnum">
+  <xs:simpleType name="IdealizedFoundationEnum">
       <xs:annotation>
          <xs:documentation>
             Defines an idealized foundation using simple boundary condition types
@@ -36,21 +38,102 @@
       </xs:choice>
    </xs:complexType>
 
-   <xs:complexType name="ColumnType">
+  <xs:complexType name="CicularColumnSectionType">
+    <xs:sequence>
+      <xs:element name="Diameter" type="bxu:LengthValueType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RectangularColumnSectionType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a rectangular column cross section.
+        +----------------------+ -/
+        |                      |  |
+        |                      |  | D  -------------- Plane of the pier
+        |                      |  |
+        +----------------------+ -/
+        |          B           |
+        /----------------------/
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="B" type="bxu:LengthValueType"/>
+      <xs:element name="D" type="bxu:LengthValueType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!--
+  General polygon section... need to relate the coordinates to the axis of the column
+  <xs:complexType name="GeneralColumnSectionType">
+    <xs:sequence minOccurs="3" maxOccurs="unbounded">
+      <xs:element name="Point" type="bxg:Point2DType"/>
+    </xs:sequence>
+  </xs:complexType>
+  -->
+
+  <xs:group name="CommonColumnDimensions">
+    <xs:annotation>
+      <xs:documentation>
+        Dimensions that are common to both prismatic and nonprismatic columns
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="BottomElevation" type="bxu:LengthValueType"></xs:element>
+        <xs:element name="Height" type="bxu:LengthValueType"></xs:element>
+      </xs:choice>
+      <xs:element name="Foundation" type="bxp:FoundationType"/>
+    </xs:sequence>
+  </xs:group>
+  
+  <xs:complexType name="PrismaticColumnType">
       <xs:annotation>
          <xs:documentation>
-            Models a column
+            Models a prismatic column. The column is represented with one of several cross section
+            types, its height or bottom elevation, and this foundation element. An Id can be
+            assigned to the column so that it can be references with the ColumnRefType element
          </xs:documentation>
       </xs:annotation>
-      <xs:sequence>
-        <xs:choice>
-         <xs:element name="BottomElevation" type="bxu:LengthValueType"></xs:element>
-         <xs:element name="Height" type="bxu:LengthValueType"></xs:element>
-        </xs:choice>
-         <xs:element name="Foundation" type="bxp:FoundationType"/>
-      </xs:sequence>
-     <xs:attribute name="id" type="xs:string" use="optional"/>
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="CircularSection" type="bxp:CicularColumnSectionType"/>
+        <xs:element name="RectangularSection" type="bxp:RectangularColumnSectionType"/>
+        <!--<xs:element name="GeneralSection" type="bxp:GeneralColumnSectionType"/>-->
+      </xs:choice>
+      <xs:group ref="bxp:CommonColumnDimensions"/>
+    </xs:sequence>
+      <xs:attribute name="Id" type="xs:string" use="optional"/>
    </xs:complexType>
+  
+  <!--<xs:complexType name="NonprismaticColumnType">
+    <xs:annotation>
+      <xs:documentation>
+        Models a non-prismatic column. The column is represented with one of several cross section
+        types, its height or bottom elevation, and this foundation element. An Id can be
+        assigned to the column so that it can be references with the ColumnRefType element
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:choice>
+        --><!-- need to model how the cross section varies over the height of the column --><!--
+        <xs:element name="CircularSection" type="bxp:CicularColumnSectionType"/>
+        <xs:element name="RectangularSection" type="bxp:RectangularColumnSectionType"/>
+        --><!--<xs:element name="GeneralSection" type="bxp:GeneralColumnSectionType"/>--><!--
+      </xs:choice>
+      <xs:group ref="bxp:CommonColumnDimensions"/>
+    </xs:sequence>
+    <xs:attribute name="Id" type="xs:string" use="optional"/>
+  </xs:complexType>-->
+  
+  <xs:complexType name="ColumnRefType">
+    <xs:annotation>
+      <xs:documentation>
+        References a previously defined Column
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Id" type="xs:string"></xs:attribute>
+  </xs:complexType>
 
    <xs:complexType name="ColumnsType">
       <xs:annotation>
@@ -59,10 +142,17 @@
          </xs:documentation>
       </xs:annotation>
       <xs:sequence>
-          <xs:element name="Column" type="bxp:ColumnType"/>
+        <xs:choice>
+          <xs:element name="PrismaticColumn" type="bxp:PrismaticColumnType"/>
+          <!--FUTURE <xs:element name="NonprismaticColumn" type="bxp:NonprismaticColumnType"/>-->
+        </xs:choice>
         <xs:sequence minOccurs="0" maxOccurs="unbounded">
             <xs:element name="Spacing" type="bxu:LengthValueType"/>
-             <xs:element name="Column" type="bxp:ColumnType"/>
+          <xs:choice>
+            <xs:element name="PrismaticColumn" type="bxp:PrismaticColumnType"/>
+            <!--FUTURE <xs:element name="NonprismaticColumn" type="bxp:NonprismaticColumnType"/>-->
+            <xs:element name="ColumnRef" type="bxp:ColumnRefType"/>
+          </xs:choice>
          </xs:sequence>
       </xs:sequence>
    </xs:complexType>
