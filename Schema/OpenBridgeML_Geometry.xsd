@@ -82,10 +82,20 @@
    <xs:simpleType name="SkewType">
       <xs:restriction base="xs:string"/>
       <!-- use reg expression to restrict the string -->
+     <!-- valid forms
+     [+|-]dd.dd                  45.0, -13.265
+     [+|-]dd [mm [ss.ss]]       45 14,  -13 23 23.11
+     dd.dd [L|R|l|r]             45.0 L, 34.23 R, 13.43 l, 13.32 r
+     dd [mm [ss.ss]] [L|R|l|r]  34 L, 34 54 R, 12 32 34.43 l, 23 r
+     -->
    </xs:simpleType>
    <xs:simpleType name="BearingType">
       <xs:restriction base="xs:string"/>
       <!-- use reg expression to restrict the string -->
+     <!-- valid forms
+     [N|S|n|s] dd.dd [E|W|e|w]
+     [N|S|n|s] dd [mm [ss.ss]] [E|W|e|w]
+     -->
    </xs:simpleType>
 
    <!--
