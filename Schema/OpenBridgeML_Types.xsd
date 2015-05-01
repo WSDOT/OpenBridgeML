@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema
+  targetNamespace="http://www.wsdot.wa.gov/OpenBridgeML/Types"
+  xmlns:bxt="http://www.wsdot.wa.gov/OpenBridgeML/Types"
+  xmlns:bxu="http://www.wsdot.wa.gov/OpenBridgeML/Units"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Units" schemaLocation="OpenBridgeML_Units.xsd" />
+
+  <xs:annotation>
+    <xs:documentation>
+      Defines general data types and enumerations used by OpenBridgeML
+    </xs:documentation>
+  </xs:annotation>
+  
+  <xs:simpleType name="OffsetMeasurementEnum">
+    <xs:annotation>
+      <xs:documentation>
+        Enumeration that defines the datum for how an offset is measured. Offsets can be
+        measured from an alignment or a bridge line
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Alignment" />
+      <xs:enumeration value="BridgeLine"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <xs:complexType name="TransverseOffsetType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a transverse offset. This is a offset normal to a specified datum line type.
+        Offsets with positive values are to the right of the datum line.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="TransverseOffset" type="bxu:LengthValueType"/>
+    </xs:sequence>
+    <xs:attribute name="Measure" type="bxt:OffsetMeasurementEnum" use="required"/>
+  </xs:complexType>
+  
+</xs:schema>

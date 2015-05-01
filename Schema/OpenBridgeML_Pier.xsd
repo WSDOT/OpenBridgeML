@@ -2,6 +2,7 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            targetNamespace="http://www.wsdot.wa.gov/OpenBridgeML/Pier"
+           xmlns:bxt="http://www.wsdot.wa.gov/OpenBridgeML/Types"
            xmlns:bxp="http://www.wsdot.wa.gov/OpenBridgeML/Pier"
            xmlns:bxg="http://www.wsdot.wa.gov/OpenBridgeML/Geometry"
            xmlns:bxu="http://www.wsdot.wa.gov/OpenBridgeML/Units">
@@ -11,8 +12,10 @@
       </xs:documentation>
    </xs:annotation>
 
+  <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Types" schemaLocation="OpenBridgeML_Types.xsd" />
   <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Geometry" schemaLocation="OpenBridgeML_Geometry.xsd" />
   <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Units" schemaLocation="OpenBridgeML_Units.xsd" />
+
 
   <xs:simpleType name="IdealizedFoundationEnum">
       <xs:annotation>
@@ -143,17 +146,33 @@
       </xs:annotation>
       <xs:sequence>
         <xs:choice>
-          <xs:element name="PrismaticColumn" type="bxp:PrismaticColumnType"/>
           <!--FUTURE <xs:element name="NonprismaticColumn" type="bxp:NonprismaticColumnType"/>-->
+          <xs:element name="PrismaticColumn" type="bxp:PrismaticColumnType"/>
         </xs:choice>
         <xs:sequence minOccurs="0" maxOccurs="unbounded">
-            <xs:element name="Spacing" type="bxu:LengthValueType"/>
+          <xs:element name="Spacing" type="bxu:LengthValueType"/>
           <xs:choice>
-            <xs:element name="PrismaticColumn" type="bxp:PrismaticColumnType"/>
             <!--FUTURE <xs:element name="NonprismaticColumn" type="bxp:NonprismaticColumnType"/>-->
+            <xs:element name="PrismaticColumn" type="bxp:PrismaticColumnType"/>
             <xs:element name="ColumnRef" type="bxp:ColumnRefType"/>
           </xs:choice>
          </xs:sequence>
+
+        <xs:element name="ReferenceColumn" type="xs:unsignedLong">
+          <xs:annotation>
+            <xs:documentation>
+              Index of the reference column. This is the column that locates the entire group of columns
+              in the pier
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="TransverseOffset" type="bxt:TransverseOffsetType">
+          <xs:annotation>
+            <xs:documentation>
+              Transverse location of the reference column.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
       </xs:sequence>
    </xs:complexType>
 

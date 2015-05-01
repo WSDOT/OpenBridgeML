@@ -61,7 +61,7 @@
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				UsePrecompiledHeader="0"
+				UsePrecompiledHeader="2"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
@@ -145,7 +145,7 @@
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				UsePrecompiledHeader="0"
+				UsePrecompiledHeader="2"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
@@ -229,7 +229,7 @@
 				PreprocessorDefinitions="BUILDOPENBRIDGEMLSDK;NDEBUG;_WINDOWS;WIN32;_AFXDLL;_USRDLL"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="0"
+				UsePrecompiledHeader="2"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
@@ -315,7 +315,7 @@
 				PreprocessorDefinitions="BUILDOPENBRIDGEMLSDK;NDEBUG;_WINDOWS;WIN32;_AFXDLL;_USRDLL"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="0"
+				UsePrecompiledHeader="2"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
@@ -400,7 +400,7 @@
 				PreprocessorDefinitions="BUILDOPENBRIDGEMLSDK;NDEBUG;_WINDOWS;WIN32;_AFXDLL;_USRDLL"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="0"
+				UsePrecompiledHeader="2"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
@@ -486,7 +486,7 @@
 				PreprocessorDefinitions="BUILDOPENBRIDGEMLSDK;NDEBUG;_WINDOWS;WIN32;_AFXDLL;_USRDLL"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="0"
+				UsePrecompiledHeader="2"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
@@ -821,6 +821,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\Schema\OpenBridgeML_Types.cxx"
+				>
+			</File>
+			<File
 				RelativePath=".\Schema\OpenBridgeML_Units.cxx"
 				>
 				<FileConfiguration
@@ -956,6 +960,10 @@
 			</File>
 			<File
 				RelativePath=".\Schema\OpenBridgeML_Pier.hxx"
+				>
+			</File>
+			<File
+				RelativePath=".\Schema\OpenBridgeML_Types.hxx"
 				>
 			</File>
 			<File
@@ -1104,6 +1112,10 @@
 			</File>
 			<File
 				RelativePath=".\Schema\OpenBridgeML_Pier.xsd"
+				>
+			</File>
+			<File
+				RelativePath=".\Schema\OpenBridgeML_Types.xsd"
 				>
 			</File>
 			<File
