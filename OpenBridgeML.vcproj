@@ -821,6 +821,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\Schema\OpenBridgeML_StandardReinforcement.cxx"
+				>
+			</File>
+			<File
 				RelativePath=".\Schema\OpenBridgeML_Types.cxx"
 				>
 			</File>
@@ -960,6 +964,10 @@
 			</File>
 			<File
 				RelativePath=".\Schema\OpenBridgeML_Pier.hxx"
+				>
+			</File>
+			<File
+				RelativePath=".\Schema\OpenBridgeML_StandardReinforcement.hxx"
 				>
 			</File>
 			<File
@@ -1112,6 +1120,10 @@
 			</File>
 			<File
 				RelativePath=".\Schema\OpenBridgeML_Pier.xsd"
+				>
+			</File>
+			<File
+				RelativePath=".\Schema\OpenBridgeML_StandardReinforcement.xsd"
 				>
 			</File>
 			<File

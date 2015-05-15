@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema
+  targetNamespace="http://www.wsdot.wa.gov/OpenBridgeML/StandardReinforcement"
+  xmlns:bsr="http://www.wsdot.wa.gov/OpenBridgeML/StandardReinforcement"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:annotation>
+    <xs:documentation>
+      Defines standard reinforcement types used by OpenBridgeML
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:simpleType name="USBarEnum">
+    <xs:annotation>
+      <xs:documentation>
+        Enumeration that defines standard US reinforcing bars
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="US3"/>
+      <xs:enumeration value="US4"/>
+      <xs:enumeration value="US5"/>
+      <xs:enumeration value="US6"/>
+      <xs:enumeration value="US7"/>
+      <xs:enumeration value="US8"/>
+      <xs:enumeration value="US9"/>
+      <xs:enumeration value="US10"/>
+      <xs:enumeration value="US11"/>
+      <xs:enumeration value="US14"/>
+      <xs:enumeration value="US18"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
