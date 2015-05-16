@@ -21,10 +21,24 @@
   | that is used to test alignment name references.
   -->
 
+  <xs:complexType name="BridgeLineType">
+    <xs:annotation>
+      <xs:documentation>
+        A Bridge Line is a layout line used to located bridge elements in plan. The Bridge Line is
+        offset from and parallel to an alignment.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Offset" type="bxu:LengthValueType"/>
+    </xs:sequence>
+    <xs:attribute name="alignmentRef" type="xs:string" use="required"/>
+  </xs:complexType>
+
   <xs:complexType name="BridgeType">
     <xs:sequence>
       <xs:element ref="lx:LandXML" minOccurs="0" maxOccurs="1"/>
       <xs:element name="Alignments" type="bxa:AlignmentsType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="BridgeLink" type="BridgeLineType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="PierLines" type="bxf:PierLinesType"/>
     </xs:sequence>
      
@@ -80,12 +94,12 @@
      <xs:keyref name="refAlignmentName" refer="uniqueAlignmentName">
        <xs:annotation>
          <xs:documentation>
-           The alignment name refered to in the Pier element must be one of the Alignment.name
+           The alignment name refered to in the BridgeLine and Pier elements must be one of the Alignment.name
            values defined in the LandXML\Alignments\Alignment, Alignments\Alignment, 
            Bridge\LandXML\Alignments\Alignment or Bridge\Aligments\Alignment branches
          </xs:documentation>
        </xs:annotation>
-       <xs:selector xpath="Bridge/Piers/Pier"/>
+       <xs:selector xpath="Bridge/Piers/Pier|Bridge/BridgeLine"/>
        <xs:field xpath="@alignmentRef"/>
      </xs:keyref>
    </xs:element>

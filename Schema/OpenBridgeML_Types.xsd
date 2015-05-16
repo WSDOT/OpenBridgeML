@@ -31,7 +31,7 @@
   <xs:complexType name="TransverseOffsetType">
     <xs:annotation>
       <xs:documentation>
-        Defines a transverse offset. This is a offset normal to a specified datum line type.
+        Defines a transverse offset. This is an offset normal to a specified datum line type.
         Offsets with positive values are to the right of the datum line.
       </xs:documentation>
     </xs:annotation>

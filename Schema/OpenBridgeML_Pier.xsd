@@ -157,24 +157,27 @@
             <xs:element name="ColumnRef" type="bxp:ColumnRefType"/>
           </xs:choice>
          </xs:sequence>
-
-        <xs:element name="ReferenceColumn" type="xs:unsignedLong">
-          <xs:annotation>
-            <xs:documentation>
-              Index of the reference column. This is the column that locates the entire group of columns
-              in the pier
-            </xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element name="TransverseOffset" type="bxt:TransverseOffsetType">
-          <xs:annotation>
-            <xs:documentation>
-              Transverse location of the reference column.
-            </xs:documentation>
-          </xs:annotation>
-        </xs:element>
       </xs:sequence>
    </xs:complexType>
+
+  <xs:complexType name="PierLocationType">
+    <xs:annotation>
+      <xs:documentation>
+        Locates the pier by specifying the location of one of the columns
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="bxt:TransverseOffsetType">
+        <xs:attribute name="ColumnIndex" type="xs:unsignedLong" use="required">
+          <xs:annotation>
+            <xs:documentation>
+              Index of the column used to located the pier
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
 
    <xs:complexType name="CapBeamType">
       <xs:annotation>
@@ -202,9 +205,17 @@
          </xs:documentation>
       </xs:annotation>
       <xs:sequence>
+        <xs:element name="Location" type="bxp:PierLocationType"/>
          <xs:element name="CapBeam" type="bxp:CapBeamType"/>
          <xs:element name="Columns" type="bxp:ColumnsType"/>
       </xs:sequence>
+     <xs:attribute name="pierLineRef" type="xs:string" use="optional">
+       <xs:annotation>
+         <xs:documentation>
+           Associates this pier with a PierLine
+         </xs:documentation>
+       </xs:annotation>
+     </xs:attribute>
    </xs:complexType>
 
 </xs:schema>
