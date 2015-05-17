@@ -58,11 +58,12 @@
     <ConsistentUnits mass="slug" length="ft" time="sec" temperature="F" angle="rad" />
   </bxu:UnitsDeclaration>
 
-  <!-- "Global" geometry definition... typically used when defining geometry for an entire project
+  <!--
+  "Global" geometry definition... typically used when defining geometry for an entire project
   with many related bridges (like an interchange). 
   -->
   
-  <!-- Alignments defined LandXML (this could be imported from an external source)-->
+  <!-- Alignments defined with LandXML (this could be imported from an external source)-->
   <lx:LandXML time="00:00:00.00+08:00" date="2013-08-12" version="1.2">
     <lx:Alignments>
       <lx:Alignment name="EAST.HRZ" staStart="999.99" length="1204.181">
@@ -136,10 +137,12 @@
 
   <Bridge name="Bridge1">
     
-    <!-- "local" alignment definition. Typically used when you have a self-contained
+    <!-- 
+    "local" alignment definition. Typically used when you have a self-contained
     bridge model or when you have a collection of bridges that aren't geographically related
     such as the alignment component of a bridge description for bridges in a permit routing
-    application. -->
+    application. 
+    -->
     <Alignments>
       <Alignment name="a4">
          <Path>
@@ -244,6 +247,10 @@
          </Surfaces>
       </Alignment>
     </Alignments>
+    
+    <!-- 
+    Defines three arbitray pier lines for this bridge.
+    -->
     <PierLines alignmentRef="a1">
       <PierLine id="1">
         <Station unit="ft">100.0</Station>
@@ -255,6 +262,158 @@
         <Station unit="ft">300.0</Station>
       </PierLine>
     </PierLines>
+
+    <Piers>
+      <Pier PierLineRef="1">
+        <Location ColumnIndex="1" Measure="Alignment">
+          <TransverseOffset unit="ft">0.0</TransverseOffset>
+        </Location>
+
+        <CapBeam>
+          <LeftOverhang>7</LeftOverhang>
+          <RightOverhang>7</RightOverhang>
+          <Width>5</Width>
+          <LeftHeight>3</LeftHeight>
+          <LeftTaperHeight>2</LeftTaperHeight>
+          <LeftTaperLength>4</LeftTaperLength>
+          <RightHeight>3</RightHeight>
+          <RightTaperHeight>2</RightTaperHeight>
+          <RightTaperLength>4</RightTaperLength>
+        </CapBeam>
+        
+        <Columns>
+          <PrismaticColumn>
+            <CircularSection>
+              <Diameter>5</Diameter>
+            </CircularSection>
+            <Height>30</Height>
+            <Foundation>
+              <IdealizedFoundation>Fixed</IdealizedFoundation>
+            </Foundation>
+          </PrismaticColumn>
+          <Spacing>10</Spacing>
+          <PrismaticColumn>
+            <CircularSection>
+              <Diameter>5</Diameter>
+            </CircularSection>
+            <Height>30</Height>
+            <Foundation>
+              <IdealizedFoundation>Fixed</IdealizedFoundation>
+            </Foundation>
+          </PrismaticColumn>
+          <Spacing>10</Spacing>
+          <PrismaticColumn>
+            <CircularSection>
+              <Diameter>5</Diameter>
+            </CircularSection>
+            <Height>30</Height>
+            <Foundation>
+              <IdealizedFoundation>Fixed</IdealizedFoundation>
+            </Foundation>
+          </PrismaticColumn>
+        </Columns>
+      </Pier>
+
+      <Pier PierLineRef="2">
+        <Location ColumnIndex="1" Measure="Alignment">
+          <TransverseOffset unit="ft">0.0</TransverseOffset>
+        </Location>
+
+        <CapBeam>
+          <LeftOverhang>7</LeftOverhang>
+          <RightOverhang>7</RightOverhang>
+          <Width>5</Width>
+          <LeftHeight>3</LeftHeight>
+          <LeftTaperHeight>2</LeftTaperHeight>
+          <LeftTaperLength>4</LeftTaperLength>
+          <RightHeight>3</RightHeight>
+          <RightTaperHeight>2</RightTaperHeight>
+          <RightTaperLength>4</RightTaperLength>
+        </CapBeam>
+
+        <Columns>
+          <PrismaticColumn>
+            <CircularSection>
+              <Diameter>5</Diameter>
+            </CircularSection>
+            <Height>30</Height>
+            <Foundation>
+              <IdealizedFoundation>Fixed</IdealizedFoundation>
+            </Foundation>
+          </PrismaticColumn>
+          <Spacing>10</Spacing>
+          <PrismaticColumn>
+            <CircularSection>
+              <Diameter>5</Diameter>
+            </CircularSection>
+            <Height>30</Height>
+            <Foundation>
+              <IdealizedFoundation>Fixed</IdealizedFoundation>
+            </Foundation>
+          </PrismaticColumn>
+          <Spacing>10</Spacing>
+          <PrismaticColumn>
+            <CircularSection>
+              <Diameter>5</Diameter>
+            </CircularSection>
+            <Height>30</Height>
+            <Foundation>
+              <IdealizedFoundation>Fixed</IdealizedFoundation>
+            </Foundation>
+          </PrismaticColumn>
+        </Columns>
+      </Pier>
+      
+      <Pier PierLineRef="3">
+        <Location ColumnIndex="1" Measure="Alignment">
+          <TransverseOffset unit="ft">0.0</TransverseOffset>
+        </Location>
+
+        <CapBeam>
+          <LeftOverhang>7</LeftOverhang>
+          <RightOverhang>7</RightOverhang>
+          <Width>5</Width>
+          <LeftHeight>3</LeftHeight>
+          <LeftTaperHeight>2</LeftTaperHeight>
+          <LeftTaperLength>4</LeftTaperLength>
+          <RightHeight>3</RightHeight>
+          <RightTaperHeight>2</RightTaperHeight>
+          <RightTaperLength>4</RightTaperLength>
+        </CapBeam>
+
+        <Columns>
+          <PrismaticColumn>
+            <CircularSection>
+              <Diameter>5</Diameter>
+            </CircularSection>
+            <Height>30</Height>
+            <Foundation>
+              <IdealizedFoundation>Fixed</IdealizedFoundation>
+            </Foundation>
+          </PrismaticColumn>
+          <Spacing>10</Spacing>
+          <PrismaticColumn>
+            <CircularSection>
+              <Diameter>5</Diameter>
+            </CircularSection>
+            <Height>30</Height>
+            <Foundation>
+              <IdealizedFoundation>Fixed</IdealizedFoundation>
+            </Foundation>
+          </PrismaticColumn>
+          <Spacing>10</Spacing>
+          <PrismaticColumn>
+            <CircularSection>
+              <Diameter>5</Diameter>
+            </CircularSection>
+            <Height>30</Height>
+            <Foundation>
+              <IdealizedFoundation>Fixed</IdealizedFoundation>
+            </Foundation>
+          </PrismaticColumn>
+        </Columns>
+      </Pier>
+    </Piers>
   </Bridge>
 </OpenBridgeML>
 

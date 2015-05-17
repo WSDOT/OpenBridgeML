@@ -6,13 +6,15 @@
   xmlns:bxa="http://www.wsdot.wa.gov/OpenBridgeML/Alignments"
   xmlns:bxf="http://www.wsdot.wa.gov/OpenBridgeML/Framing"
   xmlns:bxg="http://www.wsdot.wa.gov/OpenBridgeML/Geometry"
+  xmlns:bxp="http://www.wsdot.wa.gov/OpenBridgeML/Pier"
   xmlns:lx="http://www.landxml.org/schema/LandXML-1.2">
 
   <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Units" schemaLocation="OpenBridgeML_Units.xsd" />
    <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Alignments" schemaLocation="OpenBridgeML_Alignments.xsd" />
    <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Geometry" schemaLocation="OpenBridgeML_Geometry.xsd" />
-   <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Framing" schemaLocation="OpenBridgeML_Framing.xsd" />
-   <xs:import namespace="http://www.landxml.org/schema/LandXML-1.2" schemaLocation="LandXML-1.2.xsd" />
+  <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Framing" schemaLocation="OpenBridgeML_Framing.xsd" />
+  <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Pier" schemaLocation="OpenBridgeML_Pier.xsd" />
+  <xs:import namespace="http://www.landxml.org/schema/LandXML-1.2" schemaLocation="LandXML-1.2.xsd" />
   
 
   <!-- 
@@ -38,8 +40,9 @@
     <xs:sequence>
       <xs:element ref="lx:LandXML" minOccurs="0" maxOccurs="1"/>
       <xs:element name="Alignments" type="bxa:AlignmentsType" minOccurs="0" maxOccurs="unbounded" />
-      <xs:element name="BridgeLink" type="BridgeLineType" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="PierLines" type="bxf:PierLinesType"/>
+      <xs:element name="BridgeLine" type="BridgeLineType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="PierLines" type="bxf:PierLinesType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="Piers" type="bxp:PiersType" minOccurs="0" maxOccurs="1"/>
     </xs:sequence>
      
      <xs:attribute name="name" type="xs:string">
@@ -77,7 +80,7 @@
            <xs:element ref="lx:LandXML" minOccurs="0" maxOccurs="1"/>
            <xs:element ref="bxa:Alignments" minOccurs="0" maxOccurs="1"/>
            
-           <xs:element name="Bridge" type="BridgeType"/>
+           <xs:element name="Bridge" type="BridgeType" minOccurs="0" maxOccurs="unbounded"/>
          </xs:sequence>
       </xs:complexType>
 

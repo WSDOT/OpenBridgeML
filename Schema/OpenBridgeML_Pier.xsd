@@ -205,11 +205,12 @@
          </xs:documentation>
       </xs:annotation>
       <xs:sequence>
+        <xs:element name="PierLineOffset" type="bxu:LengthValueType" minOccurs="0" maxOccurs="1"/>
         <xs:element name="Location" type="bxp:PierLocationType"/>
          <xs:element name="CapBeam" type="bxp:CapBeamType"/>
          <xs:element name="Columns" type="bxp:ColumnsType"/>
       </xs:sequence>
-     <xs:attribute name="pierLineRef" type="xs:string" use="optional">
+     <xs:attribute name="PierLineRef" type="xs:string" use="optional">
        <xs:annotation>
          <xs:documentation>
            Associates this pier with a PierLine
@@ -217,5 +218,11 @@
        </xs:annotation>
      </xs:attribute>
    </xs:complexType>
+
+  <xs:complexType name="PiersType">
+    <xs:sequence>
+      <xs:element name="Pier" type="bxp:PierType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
 
 </xs:schema>

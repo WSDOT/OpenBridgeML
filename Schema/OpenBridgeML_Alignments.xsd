@@ -530,7 +530,7 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:element name="Alignments" type="bxa:AlignmentsType">
+  <xs:element name="Alignments" type="bxa:AlignmentsType"> 
     <xs:key name="uAlignmentName">
       <xs:annotation>
         <xs:documentation>
