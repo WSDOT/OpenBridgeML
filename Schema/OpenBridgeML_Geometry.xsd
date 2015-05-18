@@ -11,7 +11,7 @@
   </xs:annotation>
 
   <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Units" schemaLocation="OpenBridgeML_Units.xsd" />
-
+  
   <xs:complexType name="Point2DType">
     <xs:annotation>
       <xs:documentation>
@@ -24,6 +24,24 @@
       </xs:sequence>
     <xs:attribute name="id" type="xs:string" use="optional"/>
   </xs:complexType>
+
+  <xs:complexType name="ShapeType">
+    <xs:sequence>
+      <xs:element name="Point" type="bxg:Point2DType" minOccurs="3" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SectionType">
+    <xs:sequence>
+      <xs:element name="Shape" type="bxg:ShapeType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- Volume Types
+  1) 2D surface with a thickness
+  2) 2D surface extruded along a line
+  3) Connected surfaces (prism)
+  -->
 
   <xs:complexType name="PointRefType">
     <xs:annotation>
