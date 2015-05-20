@@ -79,7 +79,7 @@
 
   <!-- Alignments defined by OpenBridgeML -->
   <bxa:Alignments>
-     <Alignment name="a1">
+     <bxa:Alignment name="a1">
         <Path>
         <Start>
            <X>30000.</X>
@@ -110,15 +110,44 @@
            </Equation>
         </Equations>
         </Path>
-     </Alignment>
-     <Alignment name="a3">
+       <Profile>
+         <ProfilePoint name="Begin">
+           <Station>0</Station>
+           <Elevation>100.0</Elevation>
+         </ProfilePoint>
+         <Grade>1.24</Grade>
+         <ProfilePoint name="BVC">
+           <Station>100</Station>
+           <Elevation>124.0</Elevation>
+         </ProfilePoint>
+         <ProfilePoint name="EVC">
+           <Station>200</Station>
+           <Elevation>124.0</Elevation>
+         </ProfilePoint>
+         <VerticalCurve name="VC2">
+           <PVIStation>300</PVIStation>
+           <ExitGrade>1.24</ExitGrade>
+           <L1>50</L1>
+           <L2>90</L2>
+         </VerticalCurve>
+           <ProfilePoint name="BVC3">
+             <Station>700</Station>
+             <Elevation>124.0</Elevation>
+           </ProfilePoint>
+           <ProfilePoint name="EVC3">
+             <Station>900</Station>
+             <Elevation>124.0</Elevation>
+           </ProfilePoint>
+       </Profile>
+     </bxa:Alignment>
+    <bxa:Alignment name="a3">
         <Path>
-           <Start>
-              <X>30000.</X>
-              <Y>30000.</Y>
-              <Station>3716.32</Station>
-           </Start>
-           <PI>
+          <Station>3716.32</Station>
+          <Start>
+            <X>30000.</X>
+            <Y>30000.</Y>
+          </Start>
+          <PI>
               <X>30800.0</X>
               <Y>29600.0</Y>
               <Radius>1432.94</Radius>
@@ -132,7 +161,7 @@
               <Y>29550.</Y>
            </End>
         </Path>
-     </Alignment>
+     </bxa:Alignment>
   </bxa:Alignments>
 
   <Bridge name="Bridge1">

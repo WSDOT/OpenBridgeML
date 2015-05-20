@@ -32,8 +32,6 @@
 #endif
 
 #pragma comment(lib,SDK_AUTOLIBNAME)
-#if defined AUTOLIB
 #pragma message("Linking with " SDK_AUTOLIBNAME )
-#endif
 
 #endif // BUILDOPENBRIDGEMLSDK

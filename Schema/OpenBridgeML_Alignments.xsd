@@ -14,18 +14,56 @@
    <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Units" schemaLocation="OpenBridgeML_Units.xsd" />
    <xs:import namespace="http://www.wsdot.wa.gov/OpenBridgeML/Geometry" schemaLocation="OpenBridgeML_Geometry.xsd" />
 
-   <xs:complexType name="StationType">
+  <!-- **************************************************** -->
+  <!-- Stationing                                           -->
+  <!-- **************************************************** -->
+  <xs:complexType name="EquationType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a station equation.
+        It is impossible to maintain continuous stationing on alignments for the life of a highway.
+        When highways are realigned, the original stationing no longer fits the newly lengthened
+        or shortened alignment. A station equation adjusts station values where a gap or overlap exist.
+        Example: 993+51.67 BK = 993+55.61 Ahead
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="BackStation" type="bxu:LengthValueType"/>
+      <xs:element name="AheadStation" type="bxu:LengthValueType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="EquationsType">
+    <xs:annotation>
+      <xs:documentation>
+        A collection of station equations.
+        Example
+        <Equation>
+          <BackStation>99351.67</BackStation>
+          <AheadStation>99355.61</AheadStation>
+        </Equation>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Equation" type="bxa:EquationType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="StationType">
       <xs:annotation>
          <xs:documentation>
             Defines a station, including the station zone index if station equations are used
+            Example
+            <Station>99254.21</Station> Station is normalized to the first equation (or there aren't any equations)
+            <Station equation="1">99360.21</Station> Station is based on station equation 1
          </xs:documentation>
       </xs:annotation>
       <xs:simpleContent>
          <xs:extension base="bxu:LengthValueType">
-            <xs:attribute name="stationZoneIndex" use="optional" type="xs:integer">
+            <xs:attribute name="equation" use="optional" type="xs:integer">
                <xs:annotation>
                   <xs:documentation>
-                     Defines the station zone. If omitted, the station is a normalized value
+                     Defines the station equation index. If omitted, the station is a normalized value
                   </xs:documentation>
                </xs:annotation>
             </xs:attribute>
@@ -113,8 +151,8 @@
         Identifies a ridge point in a section Template. Ridge points occur at the boundary between Segments
       </xs:documentation>
     </xs:annotation>
-    <xs:attribute name="segmentRef" type="xs:string" />
-    <xs:attribute name="edge" type="bxa:EdgeTypeEnum" />
+    <xs:attribute name="segmentRef" type="xs:string" use="required"/>
+    <xs:attribute name="edge" type="bxa:EdgeTypeEnum" use="required" />
   </xs:complexType>
 
   <xs:complexType name="TemplateRefType">
@@ -345,8 +383,8 @@
 
      <xs:element name="Alignment" type="bxa:RidgePointType"/>
      <xs:element name="ProfileGrade" type="bxa:RidgePointType"/>
-     <xs:element name="Superelevations" type="bxa:SuperelevationsType"/>
-     <xs:element name="Widenings" type="bxa:WideningsType"/>
+     <xs:element name="Superelevations" type="bxa:SuperelevationsType" minOccurs="0" maxOccurs="1"/>
+     <xs:element name="Widenings" type="bxa:WideningsType" minOccurs="0" maxOccurs="1"/>
      </xs:sequence>
   </xs:complexType>
 
@@ -401,72 +439,73 @@
       <xs:element name="L1" type="bxu:PositiveLengthValueType" />
       <xs:element name="L2" type="bxu:PositiveLengthValueType" minOccurs="0" maxOccurs="1"/>
     </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="optional"/>
   </xs:complexType>
 
-  <xs:complexType name="VerticalCurvesType">
-    <xs:annotation>
-      <xs:documentation>
-        Collection of sequential vertical curves
-      </xs:documentation>
-    </xs:annotation>
+  <xs:complexType name="ProfilePointType">
     <xs:sequence>
-      <xs:element name="VerticalCurve" type="bxa:VerticalCurveType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Station" type="bxa:StationType" />
+      <xs:element name="Elevation" type="bxu:LengthValueType" />
     </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="optional"/> 
   </xs:complexType>
 
   <xs:complexType name="ProfileType">
     <xs:annotation>
       <xs:documentation>
-        Defines the vertical profile of the alignment.
+        Defines the vertical profile of the alignment. The profile is defined by a sequence of profile points.
+        Vertical curves are fit between the profile points. 
+        <!-- 
+         <ProfilePoint Name="Begin">
+           <Station>0</Station>
+           <Elevation>100.0</Elevation>
+         </ProfilePoint>
+         <Grade>1.24</Grade>
+         <ProfilePoint Name="BVC">
+           <Station>100</Station>
+           <Elevation>124.0</Elevation>
+         </ProfilePoint>
+         <ProfilePoint Name="EVC">
+           <Station>200</Station>
+           <Elevation>124.0</Elevation>
+         </ProfilePoint>
+         <VerticalCurve Name="VC2">
+           <PVIStation>300</PVIStation>
+           <ExitGrade>1.24</ExitGrade>
+           <L1>50</L1>
+           <L2>90</L2>
+         </VerticalCurve>
+           <ProfilePoint Name="BVC3">
+             <Station>700</Station>
+             <Elevation>124.0</Elevation>
+           </ProfilePoint>
+           <ProfilePoint Name="EVC3">
+             <Station>900</Station>
+             <Elevation>124.0</Elevation>
+           </ProfilePoint>
+        -->
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="Station" type="bxa:StationType" />
-      <xs:element name="Elevation" type="bxu:LengthValueType" />
-      <xs:element name="Grade" type="xs:double" />
-      <xs:sequence>
-        <xs:element name="VerticalCurves" type="bxa:VerticalCurvesType" minOccurs="0" maxOccurs="1" />
-      </xs:sequence>
+      <xs:element name="ProfilePoint" type="bxa:ProfilePointType"/>
+      <xs:element name="Grade" type="xs:double"/>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ProfilePoint" type="bxa:ProfilePointType"/>
+        <xs:element name="VerticalCurve" type="bxa:VerticalCurveType" minOccurs="1" maxOccurs="unbounded" />
+      </xs:choice>
     </xs:sequence>
   </xs:complexType>
 
   <!-- **************************************************** -->
   <!-- Horizontal Alignment Types                           -->
   <!-- **************************************************** -->
-  <xs:complexType name="EquationType">
-    <xs:annotation>
-      <xs:documentation>
-        Defines a station equation
-      </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="BackStation" type="bxu:LengthValueType"/>
-      <xs:element name="AheadStation" type="bxu:LengthValueType"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="EquationsType">
-    <xs:annotation>
-      <xs:documentation>
-        A collection of station equations
-      </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="Equation" type="bxa:EquationType" minOccurs="1" maxOccurs="unbounded" />
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="StartPointOnTangentType">
-    <xs:complexContent>
-      <xs:extension base="bxg:Point2DType">
-        <xs:sequence>
-          <xs:element name="Station" type="bxa:StationType"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
   <xs:complexType name="PointOfInterestionType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a Point of Intersection along an alignment path. 
+        A horizontal curve, with entry and/or exit spirals, can be optionally defined at this PI.
+      </xs:documentation>
+    </xs:annotation>
     <xs:complexContent>
       <xs:extension base="bxg:Point2DType">
         <xs:sequence>
@@ -474,6 +513,7 @@
            <xs:element name="EntrySpiralLength" type="bxu:PositiveLengthValueType" minOccurs="0" maxOccurs="1"/>
            <xs:element name="ExitSpiralLength" type="bxu:PositiveLengthValueType" minOccurs="0" maxOccurs="1"/>
         </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -481,43 +521,56 @@
    <xs:complexType name="AlignmentPathType">
       <xs:annotation>
          <xs:documentation>
+           Plan view curvilinear path defining the roadway alignment. An aligment path is defined
+           by a series of points that are connected by line segments. Horizontial curves can be
+           added to the alignment using the curve definition in the <PI/> element.
          </xs:documentation>
       </xs:annotation>
       <xs:sequence>
-         <xs:element name="Start" type="bxa:StartPointOnTangentType" />
-         <xs:element name="PI" type="bxa:PointOfInterestionType" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="Station" type="bxa:StationType"/>
+        <xs:element name="Start" type="bxg:Point2DType" />
+        <xs:element name="PI" type="bxa:PointOfInterestionType" minOccurs="0" maxOccurs="unbounded"/>
          <xs:element name="End" type="bxg:Point2DType" />
          <xs:element name="Equations" type="bxa:EquationsType" minOccurs="0" maxOccurs="1" />
       </xs:sequence>
    </xs:complexType>
 
-  <xs:complexType name="AlignmentType">
-    <xs:annotation>
-      <xs:documentation>
-        Horizontal alignment, profile grade line (PGL) or chain representing a design reference line.
-      </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-       <xs:element name="Path" type="bxa:AlignmentPathType" />
-     <xs:element name="Profile" type="bxa:ProfileType" minOccurs="0" maxOccurs="1" />
-      <xs:element name="Surfaces" type="bxa:SurfacesType" minOccurs="0" maxOccurs="1" />
-    </xs:sequence>
-     
-    <xs:attribute name="name" type="xs:string">
+  <xs:element name="Alignment">
+    <xs:complexType>
       <xs:annotation>
         <xs:documentation>
-          Defines the name of the alignment so that it can be refered to by dependent elements.
+          Horizontal alignment, profile grade line (PGL) or chain representing a design reference line.
+          The overall length of the alignment is defined by the least and greatest station give in the
+          <AlignmentPath/>, <Profile/>, and <Surfaces/> elements. If needed the horizontal alignment path
+          is projected back or ahead in the direction of the first or last tangent, the profile is
+          projected back or ahead using the first or last grade, the roadway surface is projected back
+          or ahead using the first or last cross section definition. This gives the alignment infinite
+          length, though some applications may choose to limit the projection of the alignment so that all
+          bridges are contained within the extents.
         </xs:documentation>
       </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="featureCode" type="xs:string" use="optional">
-      <xs:annotation>
-        <xs:documentation>
-          Defines the symbology and annotation of the alignment (such as L-Line, Br-Line, etc.)
-        </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
+      <xs:sequence>
+        <xs:element name="Path" type="bxa:AlignmentPathType" />
+        <xs:element name="Profile" type="bxa:ProfileType" minOccurs="0" maxOccurs="1" />
+        <xs:element name="Surfaces" type="bxa:SurfacesType" minOccurs="0" maxOccurs="1" />
+      </xs:sequence>
+
+      <xs:attribute name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the name of the alignment so that it can be refered to by dependent elements.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="featureCode" type="xs:string" use="optional">
+        <xs:annotation>
+          <xs:documentation>
+            Defines the symbology and annotation of the alignment (such as L-Line, Br-Line, etc.)
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
 
   <xs:complexType name="AlignmentsType">
     <xs:annotation>
@@ -526,7 +579,7 @@
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="Alignment" type="bxa:AlignmentType" minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element ref="bxa:Alignment" minOccurs="1" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 

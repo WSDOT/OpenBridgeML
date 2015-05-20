@@ -25,10 +25,32 @@
     <xs:attribute name="id" type="xs:string" use="optional"/>
   </xs:complexType>
 
+  <xs:complexType name="Point3DType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a point in 3D space
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="bxg:Point2DType">
+        <xs:sequence>
+          <xs:element name="Z" type="bxu:LengthValueType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Point3D" type="bxg:Point3DType"/>
+
   <xs:complexType name="ShapeType">
+    <xs:annotation>
+      <xs:documentation>
+        2D Shape
+      </xs:documentation>
+    </xs:annotation>
     <xs:sequence>
       <xs:element name="Point" type="bxg:Point2DType" minOccurs="3" maxOccurs="unbounded"/>
     </xs:sequence>
+    <xs:attribute name="Void" type="xs:boolean" use="optional"/>
   </xs:complexType>
 
   <xs:complexType name="SectionType">
@@ -36,7 +58,36 @@
       <xs:element name="Shape" type="bxg:ShapeType" minOccurs="1" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
-  
+
+  <xs:complexType name="SurfaceType">
+    <xs:sequence>
+      <xs:element name="Thickness" type="bxu:LengthValueType" minOccurs="0" maxOccurs="1"/>
+      <xs:choice>
+        <xs:element name="Shape" type="bxg:ShapeType" minOccurs="1" maxOccurs="unbounded"/>
+        <xs:sequence>
+          <xs:element name="Point" type="bxg:Point3DType" minOccurs="3" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ExtrusionType">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="Shape" type="bxg:ShapeType"/>
+        <xs:element name="Section" type="bxg:SectionType"/>
+      </xs:choice>
+      <xs:element name="Path" type="bxg:LineType"/>
+      <!-- this should be a 3D curvalinear path in space -->
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="VolumeType">
+    <xs:sequence>
+      <xs:element name="Surface" type="bxg:SurfaceType"/>
+    </xs:sequence>
+  </xs:complexType>
+
   <!-- Volume Types
   1) 2D surface with a thickness
   2) 2D surface extruded along a line
@@ -97,6 +148,7 @@
       <!-- use reg expression to restrict the string -->
       <!-- the valid string for Azimuth and Skew are the same, they are just measured from different datum -->
    </xs:simpleType>
+  
    <xs:simpleType name="SkewType">
       <xs:restriction base="xs:string"/>
       <!-- use reg expression to restrict the string -->
@@ -107,6 +159,7 @@
      dd [mm [ss.ss]] [L|R|l|r]  34 L, 34 54 R, 12 32 34.43 l, 23 r
      -->
    </xs:simpleType>
+  
    <xs:simpleType name="BearingType">
       <xs:restriction base="xs:string"/>
       <!-- use reg expression to restrict the string -->
