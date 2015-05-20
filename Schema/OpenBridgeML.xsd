@@ -55,7 +55,7 @@
   </xs:complexType>
 
 
-   <xs:element name="OpenBridgeML">
+   <xs:element name="OBML">
       <xs:annotation>
          <xs:documentation>
             This is the root of OpenBridgeML

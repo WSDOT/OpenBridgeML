@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<OpenBridgeML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<OBML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
               xsi:schemaLocation="OpenBridgeML.xsd"
               xmlns:bxu="http://www.wsdot.wa.gov/OpenBridgeML/Units"
               xmlns:bxa="http://www.wsdot.wa.gov/OpenBridgeML/Alignments"
@@ -415,5 +415,5 @@
       </Pier>
     </Piers>
   </Bridge>
-</OpenBridgeML>
+</OBML>
 

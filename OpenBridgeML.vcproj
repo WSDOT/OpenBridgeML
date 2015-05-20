@@ -599,6 +599,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\Schema\LandXML-1.2.cxx"
+				>
+			</File>
+			<File
 				RelativePath=".\OpenBridgeML.cpp"
 				>
 			</File>
@@ -947,6 +951,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Schema\LandXML-1.2.hxx"
+				>
+			</File>
+			<File
 				RelativePath=".\Schema\OpenBridgeML.hxx"
 				>
 			</File>
@@ -1006,6 +1014,58 @@
 			Filter="xsd"
 			UniqueIdentifier="{B4613DD0-97F9-48d0-97B6-4426D0160127}"
 			>
+			<File
+				RelativePath=".\Schema\LandXML-1.2.xsd"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="C++/Tree Mapping Rule"
+						NamespaceMap="http://www.landxml.org/schema/LandXML-1.2=LandXML"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="C++/Tree Mapping Rule"
+						NamespaceMap="http://www.landxml.org/schema/LandXML-1.2=LandXML"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="C++/Tree Mapping Rule"
+						NamespaceMap="http://www.landxml.org/schema/LandXML-1.2=LandXML"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="C++/Tree Mapping Rule"
+						NamespaceMap="http://www.landxml.org/schema/LandXML-1.2=LandXML"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Profile|Win32"
+					>
+					<Tool
+						Name="C++/Tree Mapping Rule"
+						NamespaceMap="http://www.landxml.org/schema/LandXML-1.2=LandXML"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Profile|x64"
+					>
+					<Tool
+						Name="C++/Tree Mapping Rule"
+						NamespaceMap="http://www.landxml.org/schema/LandXML-1.2=LandXML"
+					/>
+				</FileConfiguration>
+			</File>
 			<File
 				RelativePath=".\Schema\OpenBridgeML.xsd"
 				>
