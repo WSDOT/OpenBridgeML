@@ -42,6 +42,7 @@
 				CharType="1"
 				GenSerialization="true"
 				GenDoxygen="false"
+				GenIntellisense="true"
 				ExportSymbol="OPENBRIDGEMLSDK"
 			/>
 			<Tool
@@ -125,6 +126,7 @@
 				CharType="1"
 				GenSerialization="true"
 				GenDoxygen="false"
+				GenIntellisense="true"
 				ExportSymbol="OPENBRIDGEMLSDK"
 			/>
 			<Tool
@@ -210,6 +212,7 @@
 				CharType="1"
 				GenSerialization="true"
 				GenDoxygen="false"
+				GenIntellisense="true"
 				ExportSymbol="OPENBRIDGEMLSDK"
 			/>
 			<Tool
@@ -295,6 +298,7 @@
 				CharType="1"
 				GenSerialization="true"
 				GenDoxygen="false"
+				GenIntellisense="true"
 				ExportSymbol="OPENBRIDGEMLSDK"
 			/>
 			<Tool
@@ -381,6 +385,7 @@
 				CharType="1"
 				GenSerialization="true"
 				GenDoxygen="false"
+				GenIntellisense="true"
 				ExportSymbol="OPENBRIDGEMLSDK"
 			/>
 			<Tool
@@ -466,6 +471,7 @@
 				CharType="1"
 				GenSerialization="true"
 				GenDoxygen="false"
+				GenIntellisense="true"
 				ExportSymbol="OPENBRIDGEMLSDK"
 			/>
 			<Tool
