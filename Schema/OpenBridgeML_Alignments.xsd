@@ -427,25 +427,11 @@
   <!-- **************************************************** -->
   <!-- Vertical Profile Types                               -->
   <!-- **************************************************** -->
-  <xs:complexType name="VerticalCurveType">
-    <xs:annotation>
-      <xs:documentation>
-        Defines a vertical curve
-      </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="PVIStation" type="bxa:StationType" />
-      <xs:element name="ExitGrade" type="xs:double" />
-      <xs:element name="L1" type="bxu:PositiveLengthValueType" />
-      <xs:element name="L2" type="bxu:PositiveLengthValueType" minOccurs="0" maxOccurs="1"/>
-    </xs:sequence>
-    <xs:attribute name="name" type="xs:string" use="optional"/>
-  </xs:complexType>
-
   <xs:complexType name="ProfilePointType">
     <xs:sequence>
       <xs:element name="Station" type="bxa:StationType" />
       <xs:element name="Elevation" type="bxu:LengthValueType" />
+      <xs:element name="Grade" type="xs:double"/>
     </xs:sequence>
     <xs:attribute name="name" type="xs:string" use="optional"/> 
   </xs:complexType>
@@ -455,44 +441,10 @@
       <xs:documentation>
         Defines the vertical profile of the alignment. The profile is defined by a sequence of profile points.
         Vertical curves are fit between the profile points. 
-        <!-- 
-         <ProfilePoint Name="Begin">
-           <Station>0</Station>
-           <Elevation>100.0</Elevation>
-         </ProfilePoint>
-         <Grade>1.24</Grade>
-         <ProfilePoint Name="BVC">
-           <Station>100</Station>
-           <Elevation>124.0</Elevation>
-         </ProfilePoint>
-         <ProfilePoint Name="EVC">
-           <Station>200</Station>
-           <Elevation>124.0</Elevation>
-         </ProfilePoint>
-         <VerticalCurve Name="VC2">
-           <PVIStation>300</PVIStation>
-           <ExitGrade>1.24</ExitGrade>
-           <L1>50</L1>
-           <L2>90</L2>
-         </VerticalCurve>
-           <ProfilePoint Name="BVC3">
-             <Station>700</Station>
-             <Elevation>124.0</Elevation>
-           </ProfilePoint>
-           <ProfilePoint Name="EVC3">
-             <Station>900</Station>
-             <Elevation>124.0</Elevation>
-           </ProfilePoint>
-        -->
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="ProfilePoint" type="bxa:ProfilePointType"/>
-      <xs:element name="Grade" type="xs:double"/>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="ProfilePoint" type="bxa:ProfilePointType"/>
-        <xs:element name="VerticalCurve" type="bxa:VerticalCurveType" minOccurs="1" maxOccurs="unbounded" />
-      </xs:choice>
+      <xs:element name="ProfilePoint" type="bxa:ProfilePointType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
