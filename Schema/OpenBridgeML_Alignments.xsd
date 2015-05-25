@@ -428,6 +428,14 @@
   <!-- Vertical Profile Types                               -->
   <!-- **************************************************** -->
   <xs:complexType name="ProfilePointType">
+    <xs:annotation>
+      <xs:documentation>
+        This is a point on the profile grade line. Grade is the value going ahead on station.
+        When used in a Profile, vertical curves are fit between consecutive profile points.
+        To model a grade break, enter two profile points at the same station and elevation,
+        each with a different grade.
+      </xs:documentation>
+    </xs:annotation>
     <xs:sequence>
       <xs:element name="Station" type="bxa:StationType" />
       <xs:element name="Elevation" type="bxu:LengthValueType" />
