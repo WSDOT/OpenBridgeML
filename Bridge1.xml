@@ -114,29 +114,27 @@
          <ProfilePoint name="Begin">
            <Station>0</Station>
            <Elevation>100.0</Elevation>
+           <Grade>1.24</Grade>
          </ProfilePoint>
-         <Grade>1.24</Grade>
          <ProfilePoint name="BVC">
            <Station>100</Station>
            <Elevation>124.0</Elevation>
+           <Grade>1.24</Grade>
          </ProfilePoint>
          <ProfilePoint name="EVC">
            <Station>200</Station>
            <Elevation>124.0</Elevation>
+           <Grade>-1.24</Grade>
          </ProfilePoint>
-         <VerticalCurve name="VC2">
-           <PVIStation>300</PVIStation>
-           <ExitGrade>1.24</ExitGrade>
-           <L1>50</L1>
-           <L2>90</L2>
-         </VerticalCurve>
            <ProfilePoint name="BVC3">
              <Station>700</Station>
              <Elevation>124.0</Elevation>
+             <Grade>-1.24</Grade>
            </ProfilePoint>
            <ProfilePoint name="EVC3">
              <Station>900</Station>
              <Elevation>124.0</Elevation>
+             <Grade>1.24</Grade>
            </ProfilePoint>
        </Profile>
      </bxa:Alignment>
