@@ -53,8 +53,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 0,1,0,15
- PRODUCTVERSION 0,1,0,15
+ FILEVERSION 0,1,0,16
+ PRODUCTVERSION 0,1,0,16
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -72,12 +72,12 @@ BEGIN
             VALUE "Comments", "A member of the Alternate Route Project"
             VALUE "CompanyName", "Washington State Department of Transportation"
             VALUE "FileDescription", "OpenBridgeML Dynamic Link Library"
-            VALUE "FileVersion", "0.1.0.15"
+            VALUE "FileVersion", "0.1.0.16"
             VALUE "InternalName", "OpenBridgeML"
             VALUE "LegalCopyright", "Copyright © 1999-2016, Washington State Department of Transportation, All Rights Reserved"
             VALUE "OriginalFilename", "OpenBridgeML.dll"
             VALUE "ProductName", "OpenBridgeML"
-            VALUE "ProductVersion", "0.1.0.15"
+            VALUE "ProductVersion", "0.1.0.16"
         END
     END
     BLOCK "VarFileInfo"
