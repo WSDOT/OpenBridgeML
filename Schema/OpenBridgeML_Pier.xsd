@@ -41,7 +41,7 @@
       </xs:choice>
    </xs:complexType>
 
-  <xs:complexType name="CicularColumnSectionType">
+  <xs:complexType name="CircularColumnSectionType">
     <xs:sequence>
       <xs:element name="Diameter" type="bxu:LengthValueType"/>
     </xs:sequence>
@@ -100,7 +100,7 @@
       </xs:annotation>
     <xs:sequence>
       <xs:choice>
-        <xs:element name="CircularSection" type="bxp:CicularColumnSectionType"/>
+        <xs:element name="CircularSection" type="bxp:CircularColumnSectionType"/>
         <xs:element name="RectangularSection" type="bxp:RectangularColumnSectionType"/>
         <!--<xs:element name="GeneralSection" type="bxp:GeneralColumnSectionType"/>-->
       </xs:choice>
