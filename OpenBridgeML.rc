@@ -74,7 +74,7 @@ BEGIN
             VALUE "FileDescription", "OpenBridgeML Dynamic Link Library"
             VALUE "FileVersion", "0.1.0.24"
             VALUE "InternalName", "OpenBridgeML"
-            VALUE "LegalCopyright", "Copyright © 1999-2016, Washington State Department of Transportation, All Rights Reserved"
+            VALUE "LegalCopyright", "Copyright © 1999-2017, Washington State Department of Transportation, All Rights Reserved"
             VALUE "OriginalFilename", "OpenBridgeML.dll"
             VALUE "ProductName", "OpenBridgeML"
             VALUE "ProductVersion", "0.1.0.24"
