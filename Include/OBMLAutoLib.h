@@ -25,11 +25,7 @@
 
 #if !defined (BUILDOPENBRIDGEMLSDK)
 
-#if defined _DEBUG
-#define SDK_AUTOLIBNAME "OpenBridgeMLD.lib"
-#else
 #define SDK_AUTOLIBNAME "OpenBridgeML.lib"
-#endif
 
 #pragma comment(lib,SDK_AUTOLIBNAME)
 #pragma message("Linking with " SDK_AUTOLIBNAME )

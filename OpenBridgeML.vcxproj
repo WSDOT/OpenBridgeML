@@ -1,0 +1,462 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile|Win32">
+      <Configuration>Profile</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile|x64">
+      <Configuration>Profile</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6AA86A74-6C0E-4C93-9CCD-147BABAC5842}</ProjectGuid>
+    <RootNamespace>OpenBridgeML</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="..\..\CodeSynthesis XSD 3.3\etc\vc-10.0\xsd-cxx-tree.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>14.0.25431.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>\ARP\BridgeLink\RegFreeCOM\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>\ARP\BridgeLink\RegFreeCOM\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>\ARP\BridgeLink\RegFreeCOM\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>\ARP\BridgeLink\RegFreeCOM\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+    <OutDir>\ARP\BridgeLink\RegFreeCOM\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <CXX_Tree_Mapping_Rule>
+      <AdditionalOptions>--hxx-prologue "#include &lt;ExportSymbols.h&gt;" --cxx-prologue "#include \"stdafx.h\"" --root-element-all</AdditionalOptions>
+      <OutDir>.\Schema</OutDir>
+      <CharType>1</CharType>
+      <GenSerialization>true</GenSerialization>
+      <GenDoxygen>false</GenDoxygen>
+      <GenIntellisense>true</GenIntellisense>
+      <ExportSymbol>OPENBRIDGEMLSDK</ExportSymbol>
+    </CXX_Tree_Mapping_Rule>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\Include;\ARP\WBFL\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BUILDOPENBRIDGEMLSDK;_WINDOWS;_DEBUG;WIN32;_AFXDLL;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>xerces-c_3D.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <CXX_Tree_Mapping_Rule>
+      <AdditionalOptions>--hxx-prologue "#include &lt;ExportSymbols.h&gt;" --cxx-prologue "#include \"stdafx.h\"" --root-element-all</AdditionalOptions>
+      <OutDir>.\Schema</OutDir>
+      <CharType>1</CharType>
+      <GenSerialization>true</GenSerialization>
+      <GenDoxygen>false</GenDoxygen>
+      <GenIntellisense>true</GenIntellisense>
+      <ExportSymbol>OPENBRIDGEMLSDK</ExportSymbol>
+    </CXX_Tree_Mapping_Rule>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\Include;\ARP\WBFL\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BUILDOPENBRIDGEMLSDK;_WINDOWS;_DEBUG;WIN32;_AFXDLL;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>xerces-c_3D.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <CXX_Tree_Mapping_Rule>
+      <AdditionalOptions>--hxx-prologue "#include &lt;ExportSymbols.h&gt;" --cxx-prologue "#include \"stdafx.h\"" --root-element-all</AdditionalOptions>
+      <OutDir>.\Schema</OutDir>
+      <CharType>1</CharType>
+      <GenSerialization>true</GenSerialization>
+      <GenDoxygen>false</GenDoxygen>
+      <GenIntellisense>true</GenIntellisense>
+      <ExportSymbol>OPENBRIDGEMLSDK</ExportSymbol>
+    </CXX_Tree_Mapping_Rule>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>.\Include;\ARP\WBFL\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BUILDOPENBRIDGEMLSDK;NDEBUG;_WINDOWS;WIN32;_AFXDLL;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>xerces-c_3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <CXX_Tree_Mapping_Rule>
+      <AdditionalOptions>--hxx-prologue "#include &lt;ExportSymbols.h&gt;" --cxx-prologue "#include \"stdafx.h\"" --root-element-all</AdditionalOptions>
+      <OutDir>.\Schema</OutDir>
+      <CharType>1</CharType>
+      <GenSerialization>true</GenSerialization>
+      <GenDoxygen>false</GenDoxygen>
+      <GenIntellisense>true</GenIntellisense>
+      <ExportSymbol>OPENBRIDGEMLSDK</ExportSymbol>
+    </CXX_Tree_Mapping_Rule>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>.\Include;\ARP\WBFL\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BUILDOPENBRIDGEMLSDK;NDEBUG;_WINDOWS;WIN32;_AFXDLL;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>xerces-c_3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">
+    <CXX_Tree_Mapping_Rule>
+      <AdditionalOptions>--hxx-prologue "#include &lt;ExportSymbols.h&gt;" --cxx-prologue "#include \"stdafx.h\"" --root-element-all</AdditionalOptions>
+      <OutDir>.\Schema</OutDir>
+      <CharType>1</CharType>
+      <GenSerialization>true</GenSerialization>
+      <GenDoxygen>false</GenDoxygen>
+      <GenIntellisense>true</GenIntellisense>
+      <ExportSymbol>OPENBRIDGEMLSDK</ExportSymbol>
+    </CXX_Tree_Mapping_Rule>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>.\Include;\ARP\WBFL\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BUILDOPENBRIDGEMLSDK;NDEBUG;_WINDOWS;WIN32;_AFXDLL;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>xerces-c_3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+    <CXX_Tree_Mapping_Rule>
+      <AdditionalOptions>--hxx-prologue "#include &lt;ExportSymbols.h&gt;" --cxx-prologue "#include \"stdafx.h\"" --root-element-all</AdditionalOptions>
+      <OutDir>.\Schema</OutDir>
+      <CharType>1</CharType>
+      <GenSerialization>true</GenSerialization>
+      <GenDoxygen>false</GenDoxygen>
+      <GenIntellisense>true</GenIntellisense>
+      <ExportSymbol>OPENBRIDGEMLSDK</ExportSymbol>
+    </CXX_Tree_Mapping_Rule>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>.\Include;\ARP\WBFL\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BUILDOPENBRIDGEMLSDK;NDEBUG;_WINDOWS;WIN32;_AFXDLL;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>xerces-c_3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
+    </ClCompile>
+    <ClCompile Include="Schema\LandXML-1.2.cxx" />
+    <ClCompile Include="Schema\OpenBridgeML.cxx" />
+    <ClCompile Include="Schema\OpenBridgeML_Alignments.cxx">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Schema\OpenBridgeML_Framing.cxx">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Schema\OpenBridgeML_Geometry.cxx">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Schema\OpenBridgeML_Pier.cxx">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="Schema\OpenBridgeML_StandardReinforcement.cxx" />
+    <ClCompile Include="Schema\OpenBridgeML_Types.cxx" />
+    <ClCompile Include="Schema\OpenBridgeML_Units.cxx">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Include\ExportSymbols.h" />
+    <ClInclude Include="Include\OBMLAutoLib.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Schema\LandXML-1.2.hxx" />
+    <ClInclude Include="Schema\OpenBridgeML.hxx" />
+    <ClInclude Include="Schema\OpenBridgeML_Alignments.hxx" />
+    <ClInclude Include="Schema\OpenBridgeML_Framing.hxx" />
+    <ClInclude Include="Schema\OpenBridgeML_Geometry.hxx" />
+    <ClInclude Include="Schema\OpenBridgeML_Pier.hxx" />
+    <ClInclude Include="Schema\OpenBridgeML_StandardReinforcement.hxx" />
+    <ClInclude Include="Schema\OpenBridgeML_Types.hxx" />
+    <ClInclude Include="Schema\OpenBridgeML_Units.hxx" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="OpenBridgeML.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <CXX_Tree_Mapping_Rule Include="Schema\LandXML-1.2.xsd">
+      <NamespaceMap Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">http://www.landxml.org/schema/LandXML-1.2=LandXML</NamespaceMap>
+      <RootElement Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">LandXML</RootElement>
+      <NamespaceMap Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">http://www.landxml.org/schema/LandXML-1.2=LandXML</NamespaceMap>
+      <RootElement Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">LandXML</RootElement>
+      <NamespaceMap Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">http://www.landxml.org/schema/LandXML-1.2=LandXML</NamespaceMap>
+      <RootElement Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">LandXML</RootElement>
+      <NamespaceMap Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">http://www.landxml.org/schema/LandXML-1.2=LandXML</NamespaceMap>
+      <RootElement Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">LandXML</RootElement>
+      <NamespaceMap Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">http://www.landxml.org/schema/LandXML-1.2=LandXML</NamespaceMap>
+      <RootElement Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">LandXML</RootElement>
+      <NamespaceMap Condition="'$(Configuration)|$(Platform)'=='Release|x64'">http://www.landxml.org/schema/LandXML-1.2=LandXML</NamespaceMap>
+      <RootElement Condition="'$(Configuration)|$(Platform)'=='Release|x64'">LandXML</RootElement>
+    </CXX_Tree_Mapping_Rule>
+    <CXX_Tree_Mapping_Rule Include="Schema\OpenBridgeML.xsd">
+      <NamespaceMap Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">http://www.landxml.org/schema/LandXML-1.2=LandXML</NamespaceMap>
+      <NamespaceMap Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">http://www.landxml.org/schema/LandXML-1.2=LandXML</NamespaceMap>
+      <NamespaceMap Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">http://www.landxml.org/schema/LandXML-1.2=LandXML</NamespaceMap>
+      <NamespaceMap Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">http://www.landxml.org/schema/LandXML-1.2=LandXML</NamespaceMap>
+      <NamespaceMap Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">http://www.landxml.org/schema/LandXML-1.2=LandXML</NamespaceMap>
+      <NamespaceMap Condition="'$(Configuration)|$(Platform)'=='Release|x64'">http://www.landxml.org/schema/LandXML-1.2=LandXML</NamespaceMap>
+    </CXX_Tree_Mapping_Rule>
+    <CXX_Tree_Mapping_Rule Include="Schema\OpenBridgeML_Alignments.xsd">
+      <RootElement Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </RootElement>
+      <RootElement Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </RootElement>
+      <RootElement Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">
+      </RootElement>
+      <RootElement Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+      </RootElement>
+      <RootElement Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </RootElement>
+      <RootElement Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </RootElement>
+    </CXX_Tree_Mapping_Rule>
+    <CXX_Tree_Mapping_Rule Include="Schema\OpenBridgeML_Framing.xsd" />
+    <CXX_Tree_Mapping_Rule Include="Schema\OpenBridgeML_Geometry.xsd" />
+    <CXX_Tree_Mapping_Rule Include="Schema\OpenBridgeML_Pier.xsd" />
+    <CXX_Tree_Mapping_Rule Include="Schema\OpenBridgeML_StandardReinforcement.xsd" />
+    <CXX_Tree_Mapping_Rule Include="Schema\OpenBridgeML_Types.xsd" />
+    <CXX_Tree_Mapping_Rule Include="Schema\OpenBridgeML_Units.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\..\CodeSynthesis XSD 3.3\etc\vc-10.0\xsd-cxx-tree.targets" />
+  </ImportGroup>
+</Project>
