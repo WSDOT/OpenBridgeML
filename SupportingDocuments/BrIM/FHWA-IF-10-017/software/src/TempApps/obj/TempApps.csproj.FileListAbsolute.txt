@@ -1,5 +1,0 @@
-D:\CSharpProjects\TempApps\obj\Release\ResolveAssemblyReference.cache
-D:\CSharpProjects\TempApps\bin\Release\TempApps.exe
-D:\CSharpProjects\TempApps\bin\Release\TempApps.pdb
-D:\CSharpProjects\TempApps\obj\Release\TempApps.exe
-D:\CSharpProjects\TempApps\obj\Release\TempApps.pdb

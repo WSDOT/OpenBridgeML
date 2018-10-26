@@ -1,9 +1,0 @@
-bin\Debug\ExportEstimatingLink.exe
-bin\Debug\ExportEstimatingLink.pdb
-bin\Debug\TeklaBeans.dll
-bin\Debug\TeklaBeans.pdb
-obj\Debug\ResolveAssemblyReference.cache
-obj\Debug\ExportEstimatingLink.exe
-obj\Debug\ExportEstimatingLink.pdb
-bin\Debug\QCS.Utils.dll
-bin\Debug\QCS.Utils.pdb

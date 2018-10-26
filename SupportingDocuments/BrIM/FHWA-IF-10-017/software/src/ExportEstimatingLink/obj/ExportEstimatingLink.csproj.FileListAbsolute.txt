@@ -1,9 +1,0 @@
-D:\CSharpProjects\ExportEstimatingLink\obj\Debug\ResolveAssemblyReference.cache
-D:\CSharpProjects\ExportEstimatingLink\bin\Debug\ExportEstimatingLink.exe
-D:\CSharpProjects\ExportEstimatingLink\bin\Debug\ExportEstimatingLink.pdb
-D:\CSharpProjects\ExportEstimatingLink\bin\Debug\TeklaBeans.dll
-D:\CSharpProjects\ExportEstimatingLink\bin\Debug\TeklaBeans.pdb
-D:\CSharpProjects\ExportEstimatingLink\obj\Debug\ExportEstimatingLink.exe
-D:\CSharpProjects\ExportEstimatingLink\obj\Debug\ExportEstimatingLink.pdb
-D:\CSharpProjects\ExportEstimatingLink\bin\Debug\QCS.Utils.dll
-D:\CSharpProjects\ExportEstimatingLink\bin\Debug\QCS.Utils.pdb
