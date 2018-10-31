@@ -68,7 +68,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
-    <Import Project="..\..\CodeSynthesis XSD 3.3\etc\vc-10.0\xsd-cxx-tree.props" />
+    <Import Project="$(XSDDIR)\etc\vc-10.0\xsd-cxx-tree.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'" Label="PropertySheets">
     <Import Project="XSD.props" />
@@ -482,6 +482,6 @@
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\..\CodeSynthesis XSD 3.3\etc\vc-10.0\xsd-cxx-tree.targets" />
+    <Import Project="$(XSDDIR)\etc\vc-10.0\xsd-cxx-tree.targets" />
   </ImportGroup>
 </Project>
